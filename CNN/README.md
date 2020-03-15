@@ -289,7 +289,7 @@ Now you are ready to train your model. As mentioned above, an Ubuntu machine wit
 Ensuring you have completed all previous steps, you can start training using the following command. 
 
 ```
-python3 AllDS2020.py Train
+python AllDS2020.py Train
 ```
 
 This tells the classifier to start in Train mode which will start the model training process.
@@ -413,7 +413,7 @@ Now we will use the test data to see how the classifier reacts to our testing da
 This part of the system will use the test data from the **Model/Data/ALL-IDB-1/Test** directory. The command to start testing locally is as follows:
 
 ```
-python3 AllDS2020.py Classify
+python AllDS2020.py Classify
 ```
 
 ## Output/Results
@@ -475,13 +475,13 @@ This part of the system will use the test data from the **Model/Data/Test** dire
 You need to open two terminal windows or tabs, in the first, use the following command to start the server:
 
 ```
-python3 AllDS2020.py Server
+python AllDS2020.py Server
 ```
 
 In your second terminal, use the following command:
 
 ```
-python3 AllDS2020.py Client
+python AllDS2020.py Client
 ```
 
 ## Output/Results
