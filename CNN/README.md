@@ -10,8 +10,6 @@ This project is the classifier that is used in Acute the Lymphoblastic Leukemia 
 
 _This is a high level tutorial for those that have little to no programming experience allowing them to use the system. In the coming weeks a series of low level articles will be published on our [Medium](https://medium.com/leukemiaairesearch "Medium") for the more experienced developers._
 
-&nbsp;
-
 ## Results Overview
 
 We have tested our model on a number of different hardwares, including Intel® CPUs & NVIDIA GPUs. Results seem to vary between CPU & GPU, and tests show further investigation into seeding and randomness introduced to our network via the GPU software. For reproducible results every time, it is suggested to train on a CPU, although this obviously requires more time.
@@ -25,8 +23,6 @@ Below are the results from individual training sessions.
 | NVIDIA GTX 1050 Ti Ti/PCIe/SSE2 | 1180 |  404 | 20 |  0.97772276 | 0.97772276 | 0.97772276 | 0.9945594 |
 | Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8   | 1180 |  404 | 20 |  0.9752475 | 0.9752475 | 0.9752475 | 0.991492 |
 | Intel® Core™ i5 CPU @ 2.4 GHz   | 1180 |  404 | 20 |  0.9589041 | 0.9589041 | 0.9589041 | 0.99483955 |
-
-&nbsp;
 
 # Hardware
 
@@ -43,12 +39,10 @@ Below are the results from individual training sessions.
 
 # Software 
 
-In this project I used the following software:
+In this project we have used the following softwares:
 
 - Anaconda
 - Tensorflow 2 GPU
-
-&nbsp;
 
 # Installation
 
@@ -61,8 +55,6 @@ All other requirements should be included in **Setup.sh** you can run this file 
 ```
 sh Setup.sh
 ```
-
-&nbsp;
 
 # Network Architecture
 
@@ -82,8 +74,6 @@ We will build a Convolutional Neural Network, as shown in Fig 1, consisting of t
 - Fully Connected layer (2 neurons)
 - Softmax layer (Output 2)
 
-&nbsp;
-
 # Getting Started
 
 To get started make sure you completed the steps on the [project home README](https://github.com/AMLResearchProject/ALL-Detection-System-2020 "project home README").
@@ -94,7 +84,7 @@ Once you have your data you need to add it to the project filesystem. You will n
 
 We will created an augmented dataset based on the [Leukemia Blood Cell Image Classification Using Convolutional Neural Network](http://www.ijcte.org/vol10/1198-H0012.pdf "Leukemia Blood Cell Image Classification Using Convolutional Neural Network") by T. T. P. Thanh, Caleb Vununu, Sukhrob Atoev, Suk-Hwan Lee, and Ki-Ryong Kwon. In this case, we will use more rotated images to increase the dataset further.
 
-First take the ten positive and ten negative samples shown below, and place them in the **Model/Data/Test** directory. This will be used by our Oculus Rift application and our testing purposes. You can use any data split you like, to ensure you get the same results please use the same test images and the CPU for training. There is currently an issue when using GPU, most likely due to randomness implemented in the GPU software. It is possible to replicate the results here but it may take more than one attempt at training. This is something I will work on for a future update. 
+First take the ten positive and ten negative samples shown below, and place them in the **Model/Data/Test** directory. This will be used by our Oculus Rift application and our testing purposes. You can use any data split you like, to ensure you get the same results please use the same test images and the CPU for training. There is currently an issue when using GPU, most likely due to randomness implemented in the GPU software. It is possible to replicate the results here but it may take more than one attempt at training. This is something we will work on for a future update.
 
 - im006_1.jpg
 - im020_1.jpg
@@ -141,6 +131,7 @@ Our functionality for this network can be found mainly in the **Classes** direct
 | Data.py   | [Data.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Data.py "Data.py") is a data helper class. The class provides the functionality for sorting and preparing your training and validation data.  |     |
 | Augmentation.py   | [Augmentation.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Augmentation.py "Model.py") is a augmentation helper class, The class provides functionality for data augmentation.       |
 | Model.py   | [Model.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Model.py "Model.py") is a model helper class. The class provides the functionality for creating our CNN.       |
+| Server.py  | [Server.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Server.py "Server.py"): is a server helpers class. The class provides the functionality for creating our CNN    |
 
 #### Functions
 
@@ -191,9 +182,12 @@ Our functionality for this network can be found mainly in the **Classes** direct
 | vr_http_classify() | The vr_http_classify() classifies an image sent via from VR via HTTP. |
 | get_predictions() | The get_predictions() gets a prediction for an image. |
 | reshape() | The reshape() reshapes an image. |
-| Server.py | start() | The start() starts the classification API server. |
 
-&nbsp;
+ ##### Server.py
+
+| Function |  Description |
+| --------- | -------- |
+| start() | The start() starts the classification API server. |
 
 # Configuration
 
@@ -273,8 +267,6 @@ The cnn object contains 3 Json Objects (api, data, model and train) and a JSON A
 
 In my case, the configuration above was the best out of my testing, but you may find different configurations work better. Feel free to update these settings to your liking, and please let us know of your experiences.
 
-&nbsp;
-
 # Metrics
 
 We can use metrics to measure the effectiveness of our model. In this network we will use the following metrics:
@@ -288,8 +280,6 @@ tf.keras.metrics.AUC(name='auc')
 
 These metrics will be displayed and plotted once our model is trained.  A useful tutorial while working on the metrics was the [Classification on imbalanced data](https://www.tensorflow.org/tutorials/structured_data/imbalanced_data) tutorial on Tensorflow's website.
 
-&nbsp;
-
 # Training the model
 
 Now you are ready to train your model. As mentioned above, an Ubuntu machine with an NVIDIA GTX 1050 ti was used. Using different machines/GPU(standalone or integrated)/CPU may vary the results, if so please let us know your findings.
@@ -299,7 +289,7 @@ Now you are ready to train your model. As mentioned above, an Ubuntu machine wit
 Ensuring you have completed all previous steps, you can start training using the following command. 
 
 ```
-python3 AllDS2020.py Train
+python AllDS2020.py Train
 ```
 
 This tells the classifier to start in Train mode which will start the model training process.
@@ -416,8 +406,6 @@ _Fig 6. Ubuntu/GTX 1050 ti AUC_
 | Sensitivity / Recall | 0.9794521   | 0.98% |
 | Specificity          | 0.9815668202764977  | 99% |
 
-&nbsp;
-
 # Local Testing
 
 Now we will use the test data to see how the classifier reacts to our testing data. Real world testing is the most important testing, as it allows you to see the how the model performs in a real world environment. 
@@ -425,7 +413,7 @@ Now we will use the test data to see how the classifier reacts to our testing da
 This part of the system will use the test data from the **Model/Data/ALL-IDB-1/Test** directory. The command to start testing locally is as follows:
 
 ```
-python3 AllDS2020.py Classify
+python AllDS2020.py Classify
 ```
 
 ## Output/Results
@@ -478,8 +466,6 @@ python3 AllDS2020.py Classify
 2020-03-12 05:08:20,920 - Model - INFO - False Negatives: 1
 ```
 
-&nbsp;
-
 # Server Testing
 
 Now we will use the test data to see how the server classifier reacts.
@@ -489,13 +475,13 @@ This part of the system will use the test data from the **Model/Data/Test** dire
 You need to open two terminal windows or tabs, in the first, use the following command to start the server:
 
 ```
-python3 AllDS2020.py Server
+python AllDS2020.py Server
 ```
 
 In your second terminal, use the following command:
 
 ```
-python3 AllDS2020.py Client
+python AllDS2020.py Client
 ```
 
 ## Output/Results
@@ -572,8 +558,6 @@ python AllDS2020.py Client
 2020-03-12 05:21:34,844 - Model - INFO - False Negatives: 1
 ```
 
-&nbsp;
-
 # Contributing
 
 The Peter Moss Acute Myeloid & Lymphoblastic Leukemia AI Research project encourages and welcomes code contributions, bug fixes and enhancements from the Github.
@@ -587,8 +571,6 @@ Please read the [CONTRIBUTING](https://github.com/AMLResearchProject/ALL-Detecti
 - **TESTING:** [Rishabh Banga](https://www.leukemiaresearchassociation.ai/team/rishabh-banga "Rishabh Banga") - [Peter Moss Leukemia AI Research](https://www.leukemiaresearchassociation.ai "Peter Moss Leukemia AI Research") & Intel Software Innovator, Dehli, India
 
 - **TESTING:** [Javier Lopez Alonso](https://www.leukemiaresearchassociation.ai/team/javier-lopez-alonso "Javier Lopez Alonso") - [Peter Moss Leukemia AI Research](https://www.leukemiaresearchassociation.ai "Peter Moss Leukemia AI Research") co-founder, Barcelona, Spain
-
-&nbsp;
 
 # Versioning
 
