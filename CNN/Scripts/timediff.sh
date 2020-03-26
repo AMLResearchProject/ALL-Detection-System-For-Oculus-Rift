@@ -14,6 +14,6 @@ if [[ "$2" == "Classify" ]] || [[ "$2" == "Train" ]] ; then
 	timediff $2
 else
 	echo "Wrong Input Provided"
-	echo "Use Train or Classify"
+	echo "Use -op Train or -op Classify"
 	exit 0
 fi
