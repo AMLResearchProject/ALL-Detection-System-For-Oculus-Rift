@@ -2,7 +2,7 @@
 
 ## Acute Lymphoblastic Leukemia Detection System 2020
 
-[![CURRENT RELEASE](https://img.shields.io/badge/CURRENT%20RELEASE-0.0.1-blue.svg)](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/0.0.1) [![UPCOMING RELEASE](https://img.shields.io/badge/CURRENT%20DEV%20BRANCH-0.0.2-blue.svg)](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/0.0.2)
+[![CURRENT RELEASE](https://img.shields.io/badge/CURRENT%20RELEASE-0.0.2-blue.svg)](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/0.0.2) [![UPCOMING RELEASE](https://img.shields.io/badge/CURRENT%20DEV%20BRANCH-0.0.3-blue.svg)](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/0.0.3)
 
 ![Peter Moss Acute Myeloid & Lymphoblastic Leukemia AI Research Project](Media/Images/AllVrCNN.jpg)
 
@@ -33,7 +33,7 @@ Below are the results from individual training sessions.
 | Ubuntu 18.04 | NVIDIA GTX 1050 Ti Ti/PCIe/SSE2 | 1180 |  404 | 20 |  0.97772276 | 0.97772276 | 0.97772276 | 0.9945594 |
 | Ubuntu 18.04 | Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8   | 1180 |  404 | 20 |  0.9752475 | 0.9752475 | 0.9752475 | 0.991492 |
 | Windows 10 | Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8   | 1180 |  404 | 20 |  0.9851485 | 0.9851485 | 0.9851485 | 0.9985846 |
-| Ubuntu 18.04 | Intel® Core™ i5 CPU @ 2.4 GHz   | 1180 |  404 | 20 |  0.9589041 | 0.9589041 | 0.9589041 | 0.99483955 |
+| macOS Mojave 10.14.6 | Intel® Core™ i5 CPU @ 2.4 GHz   | 1180 |  404 | 20 |  0.9589041 | 0.9589041 | 0.9589041 | 0.99483955 |
 
 &nbsp;
 
@@ -43,10 +43,10 @@ Clone the [ALL-Detection-System-2020](https://github.com/AMLResearchProject/ALL-
 
 To do this, make sure you have Git installed, navigate to the location you want to clone the repository to on your device using terminal/commandline, and then use the following command.
 
-The **-b "0.0.2"** parameter ensures you get the code from the latest development branch. Before using the below command please check our latest development branch in the button at the top of this page.
+The **-b "0.0.3"** parameter ensures you get the code from the latest development branch. Before using the below command please check our latest development branch in the button at the top of this page.
 
 ```
-  $ git clone -b "0.0.2" https://github.com/AMLResearchProject/ALL-Detection-System-2020.git
+  $ git clone -b "0.0.3" https://github.com/AMLResearchProject/ALL-Detection-System-2020.git
 ```
 
 Once you have used the command above you will see a directory called **ALL-Detection-System-2020** in the location you chose to clone to. In terminal, navigate to the **ALL-Detection-System-2020** directory, this is your project root directory.
