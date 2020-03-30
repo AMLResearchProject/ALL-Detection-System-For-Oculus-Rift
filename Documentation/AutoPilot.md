@@ -35,7 +35,7 @@ Enter path to im folder of ALL_IDB1 (in Windows path should be in format C:/User
 ```
 This one is pretty self explanatory, so path to be provided by User should be in the format C:/Users/XYZ/PML-AI-Research/ALL_IDB_Data/ALL_IDB1/im
 
-Once all this is done, Training and Testing would begin with **Timediff.sh** running each of them and recording the total time taken by each.
+Once all this is done, Training and Testing would begin with **TimeDiff.sh** running each of them and recording the total time taken by each.
 
 &nbsp;
 
