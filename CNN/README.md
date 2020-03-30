@@ -63,9 +63,9 @@ sh Setup.sh
 
 If you're working on a Windows 10 machine and facing some issues, please follow our [Windows Issues guide](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/Documentation/Windows.md "Windows Issues guide"). In case your issue is not mentioned and you're able to solve it, do create a pull request mentioning the same in the aforementioned file.
 
-## AutoRun Scripts
+## AutoPilot Scripts
 
-If you would like to replicate the exact scenarios we tested in or simply like to put the entire process in AutoRun, please follow our [AutoRun guide](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/Documentation/AutoRun.md "AutoRun guide"). 
+If you would like to replicate the exact scenarios we tested in or simply like to put the entire process in AutoPilot, please follow our [AutoPilot guide](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/Documentation/AutoPilot.md "AutoPilot guide"). 
 
 &nbsp;
 

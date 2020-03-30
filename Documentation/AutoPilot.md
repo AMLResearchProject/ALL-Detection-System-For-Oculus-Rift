@@ -6,7 +6,7 @@
 
 To run in autopilot we'd be utilizing 3 scripts:
 
-1. Autorun.sh
+1. AutoPilot.sh
 2. Randomizer.sh
 3. Timediff.sh
 
@@ -19,9 +19,9 @@ cd Scripts
 From here we run
 
 ```
-sh Autorun.sh
+sh AutoPilot.sh
 ```
-**Autorun.sh** acts as a wrapper for **Script.sh** and runs all the remaining scripts. Now sit back and enjoy the ride as dependencies start installing on their own, but before you can completely relax you have to provide a couple of more inputs
+**AutoPilot.sh** acts as a wrapper for **Script.sh** and runs all the remaining scripts. Now sit back and enjoy the ride as dependencies start installing on their own, but before you can completely relax you have to provide a couple of more inputs
 
 ```
 Do you want to randomize the image transfer in Test folder? (Y/N) -
