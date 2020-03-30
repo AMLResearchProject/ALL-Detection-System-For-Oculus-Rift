@@ -2,12 +2,14 @@
 
 ## Acute Lymphoblastic Leukemia Detection System 2020
 
+&nbsp;
+
 **Issue #1
 ImportError: DLL load failed: The specified module could not be found**
 
 **OS -** Windows 10
 
-**Reason -** As per TF's Release Notes for 2.1.0. Officially-released tensorflow Pip packages are now built with Visual Studio 2019 version 16.4 in order to take advantage of the new /d2ReducedOptimizeHugeFunctions compiler flag. 
+**Reason -** As per TF's Release Notes for 2.1.0. Officially-released Tensorflow Pip packages are now built with Visual Studio 2019 version 16.4 in order to take advantage of the new /d2ReducedOptimizeHugeFunctions compiler flag. 
 
 To use these new packages, you must install "Microsoft Visual C++ Redistributable for Visual Studio 2015, 2017 and 2019", available from Microsoft's website here.
 
@@ -20,6 +22,8 @@ To use these new packages, you must install "Microsoft Visual C++ Redistributabl
 **Reason -** For binaries, the PIP dependency is protobuf >= 3.9.2. The same can be referred from [here](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/pip_package/setup.py#L64)
 
 **Solution -** Run pip install -U protobuf to install latest version of protobuf
+
+&nbsp;
 
 # Contributing
 

@@ -26,8 +26,9 @@ One method to overcome reproducibility issues and get an good idea of how well o
 
 Below are the results from individual training sessions.
 
-| Operating System | Hardware | Training | Validation | Test | Accuracy | Recall | Precision | AUC/ROC |
+| OS | Hardware | Training | Validation | Test | Accuracy | Recall | Precision | AUC/ROC |
 | -------------------- | -------------------- | -------------------- | ----- | ---------- | ---------- | ---------- | ---------- | ---------- |
+| Google Colab | Tesla K80 GPU | 1180 |  404 | 20 |  0.9727723 | 0.9727723 | 0.9727723 | 0.9948964 |
 | Windows 10 | NVIDIA GeoForce GTX 1060 | 1180 |  404 | 20 |  0.97066015 | 0.97066015 | 0.97066015 | 0.9908836 |
 | Ubuntu 18.04 | NVIDIA GTX 1050 Ti Ti/PCIe/SSE2 | 1180 |  404 | 20 |  0.97772276 | 0.97772276 | 0.97772276 | 0.9945594 |
 | Ubuntu 18.04 | Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8   | 1180 |  404 | 20 |  0.9752475 | 0.9752475 | 0.9752475 | 0.991492 |

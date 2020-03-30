@@ -2,6 +2,8 @@
 
 ## Acute Lymphoblastic Leukemia Detection System 2020
 
+&nbsp;
+
 # AllDS2020 CNN
 
 ## Introduction
@@ -20,17 +22,22 @@ One method to overcome reproducibility issues and get an good idea of how well o
 
 Below are the results from individual training sessions.
 
-| Hardware | Training | Validation | Test | Accuracy | Recall | Precision | AUC/ROC |
-| -------------------- | -------------------- | ----- | ---------- | ---------- | ---------- | ---------- | ---------- |
+| OS | Hardware | Training | Validation | Test | Accuracy | Recall | Precision | AUC/ROC |
+| -------------------- | -------------------- | -------------------- | ----- | ---------- | ---------- | ---------- | ---------- | ---------- |
+| Google Colab | Tesla K80 GPU | 1180 |  404 | 20 |  0.9727723 | 0.9727723 | 0.9727723 | 0.9948964 |
 | Windows 10 | NVIDIA GeoForce GTX 1060 | 1180 |  404 | 20 |  0.97066015 | 0.97066015 | 0.97066015 | 0.9908836 |
 | Ubuntu 18.04 | NVIDIA GTX 1050 Ti Ti/PCIe/SSE2 | 1180 |  404 | 20 |  0.97772276 | 0.97772276 | 0.97772276 | 0.9945594 |
 | Ubuntu 18.04 | Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8   | 1180 |  404 | 20 |  0.9752475 | 0.9752475 | 0.9752475 | 0.991492 |
 | Windows 10 | Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8   | 1180 |  404 | 20 |  0.9851485 | 0.9851485 | 0.9851485 | 0.9985846 |
 | Ubuntu 18.04 | Intel® Core™ i5 CPU @ 2.4 GHz   | 1180 |  404 | 20 |  0.9589041 | 0.9589041 | 0.9589041 | 0.99483955 |
 
+&nbsp;
+
 # Programming Language
 
 - Python 3.7
+
+&nbsp;
 
 # Software 
 
@@ -57,11 +64,11 @@ sh Setup.sh
 
 ## Windows Installation Issue(s)
 
-If you're working on a Windows 10 machine and facing some issues, please follow our [Windows Issues guide](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/Documentation/WindowsIssues.md "Windows Issues guide"). In case your issue is not mentioned and you're able to solve it, do create a pull request mentioning the same in the aforementioned file.
+If you're working on a Windows 10 machine and facing some issues, please follow our [Windows Issues guide](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/Documentation/Windows.md "Windows Issues guide"). In case your issue is not mentioned and you're able to solve it, do create a pull request mentioning the same in the aforementioned file.
 
-## Autorun Scripts
+## AutoPilot Scripts
 
-If you would like to replicate the exact scenarios we tested in or simply like to put the entire process in Autopilot, please follow our [Autopilot guide](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/Documentation/Autopilot.md "Autopilot guide"). 
+If you would like to replicate the exact scenarios we tested in or simply like to put the entire process in AutoPilot, please follow our [AutoPilot guide](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/Documentation/AutoPilot.md "AutoPilot guide"). 
 
 &nbsp;
 
@@ -136,13 +143,12 @@ The code for this project consists of 5 main Python files and a configuration fi
 
 Our functionality for this network can be found mainly in the **Classes** directory. 
 
-|    Class | Description |
-| ------------- | ------------ |
-| Helpers.py   | [Helpers.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Helpers.py "Helpers.py") is a helper class. The class loads the configuration and logging that the project uses.      |
-| Data.py   | [Data.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Data.py "Data.py") is a data helper class. The class provides the functionality for sorting and preparing your training and validation data.  |     |
-| Augmentation.py   | [Augmentation.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Augmentation.py "Model.py") is a augmentation helper class, The class provides functionality for data augmentation.       |
-| Model.py   | [Model.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Model.py "Model.py") is a model helper class. The class provides the functionality for creating our CNN.       |
-| Server.py  | [Server.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Server.py "Server.py"): is a server helpers class. The class provides the functionality for creating our CNN    |
+- [Helpers.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Helpers.py "Helpers.py") is a helper class. The class loads the configuration and logging that the project uses.
+- [Data.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Data.py "Data.py") is a data helper class. The class provides the functionality for sorting and preparing your training and validation data.
+- [Augmentation.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Augmentation.py "Augmentation.py") is a augmentation helper class, The class provides functionality for data augmentation.
+- [Model.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Model.py "Model.py") is a model helper class. The class provides the functionality for creating our CNN. 
+- [Server.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Server.py "Server.py") is a server helpers class. The class provides the functionality for creating our CNN 
+
 
 #### Functions
 
@@ -150,55 +156,47 @@ Our functionality for this network can be found mainly in the **Classes** direct
 
  ##### Data.py
 
-| Function |  Description |
-| ------------ | -------- |
-| do_im_process() | The do_im_process() function augments and prepares the data. |
-| convert_data() | The convert_data() function converts the training data to a numpy array. |
-| encode_labels() | The encode_labels() function One Hot Encodes the labels. |
-| shuffle() | The shuffle() function shuffles the data helping to eliminate bias. |
-| get_split() | The get_split() function splits the prepared data and labels into training and validation data. |
-| resize() | The resize() function resizes an image. |
+- **do_im_process()** - The do_im_process() function augments and prepares the data.
+- **convert_data()** - The convert_data() function converts the training data to a numpy array.
+- **encode_labels()** - The encode_labels() function One Hot Encodes the labels.
+- **shuffle()** - The shuffle() function shuffles the data helping to eliminate bias.
+- **get_split()** - The get_split() function splits the prepared data and labels into training and validation data.
+- **resize()** - The resize() function resizes an image.
 
  ##### Augmentation.py
 
-| Function |  Description |
-| ------------ | -------- |
-| grayscale() | The grayscale() function creates a grayscale copy of an image. |
-| equalize_hist() | The equalize_hist() function creates a histogram equalized copy of an image. |
-| reflection() | The reflection() function creates a horizontally and vertically reflected copies of an image. |
-| gaussian() | The gaussian() function creates a gaussian blurred copy of an image. |
-| translate() | The translate() function creates a translated copy of an image. |
-| rotation() | The rotation() function creates rotated copy/copies of an image. |
-| shear() | The shear() function creates sheared copy of an image. |
+- **grayscale()** The grayscale() function creates a grayscale copy of an image.
+- **equalize_hist()** The equalize_hist() function creates a histogram equalized copy of an image.
+- **reflection()** The reflection() function creates a horizontally and vertically reflected copies of an image.
+- **gaussian()** The gaussian() function creates a gaussian blurred copy of an image.
+- **translate()** The translate() function creates a translated copy of an image.
+- **rotation()** The rotation() function creates rotated copy/copies of an image.
+- **shear()** The shear() function creates sheared copy of an image.
 
  ##### Model.py
 
-| Function |  Description |
-| ------------ | -------- |
-| do_data() | The do_data() creates an augmented dataset that we will use for our model training and validation. |
-| do_network() | The do_network() function creates the network architecture proposed in the [Acute Leukemia Classification Using Convolution Neural Network In Clinical Decision Support System](https://airccj.org/CSCP/vol7/csit77505.pdf "Acute Leukemia Classification Using Convolution Neural Network In Clinical Decision Support System") paper. |
-| do_train() | The do_train() function compiles and trains the model. |
-| do_evaluate() | The do_evaluate() function evaluates the model, and displays the values for the metrics we specified. |
-| do_predictions() | The do_predictions() function makes predictions on the train & test sets. |
-| visualize_metrics() | The visualize_metrics() function allows you to visualize and save the metrics plot images. |
-| confusion_matrix() | The confusion_matrix() function allows you to visualize the confusion matrix. |
-| figures_of_merit() | The figures_of_merit() calculates the figures of merit requested on the ALL-IDB website. |
-| save_weights() | The save_weights() saves the model weights. |
-| save_model_as_json() | The save_model_as_json() saves the model as JSON. |
-| load_model_and_weights() | The load_model_and_weights() loads the trained model and weights. |
-| test_classifier() | The test_classifier() tests the classifier using the test data set. |
-| send_request() | The send_request() sends a HTTP request. |
-| test_http_classifier() | The test_http_classifier() tests the server / API by sending the test data to the classifier with the API. |
-| http_classify() | The http_classify() classifies an image sent via HTTP. |
-| vr_http_classify() | The vr_http_classify() classifies an image sent via from VR via HTTP. |
-| get_predictions() | The get_predictions() gets a prediction for an image. |
-| reshape() | The reshape() reshapes an image. |
+- **do_data()** The do_data() creates an augmented dataset that we will use for our model training and validation.
+- **do_network()** The do_network() function creates the network architecture proposed in the [Acute Leukemia Classification Using Convolution Neural Network In Clinical Decision Support System](https://airccj.org/CSCP/vol7/csit77505.pdf "Acute Leukemia Classification Using Convolution Neural Network In Clinical Decision Support System") paper.
+- **do_train()** The do_train() function compiles and trains the model.
+- **do_evaluate()** The do_evaluate() function evaluates the model, and displays the values for the metrics we specified.
+- **do_predictions()** The do_predictions() function makes predictions on the train & test sets.
+- **visualize_metrics()** The visualize_metrics() function allows you to visualize and save the metrics plot images.
+- **confusion_matrix()** The confusion_matrix() function allows you to visualize the confusion matrix.
+- **figures_of_merit()** The figures_of_merit() calculates the figures of merit requested on the ALL-IDB website.
+- **save_weights()** The save_weights() saves the model weights.
+- **save_model_as_json()** The save_model_as_json() saves the model as JSON.
+- **load_model_and_weights()** The load_model_and_weights() loads the trained model and weights.
+- **test_classifier()** The test_classifier() tests the classifier using the test data set.
+- **send_request()** The send_request() sends a HTTP request.
+- **test_http_classifier()** The test_http_classifier() tests the server / API by sending the test data to the classifier with the API.
+- **http_classify()** The http_classify() classifies an image sent via HTTP.
+- **vr_http_classify()** The vr_http_classify() classifies an image sent via from VR via HTTP.
+- **get_predictions()** The get_predictions() gets a prediction for an image.
+- **reshape()** The reshape() reshapes an image.
 
  ##### Server.py
 
-| Function |  Description |
-| --------- | -------- |
-| start() | The start() starts the classification API server. |
+- **start()** The start() starts the classification API server.
 
 &nbsp;
 
@@ -276,7 +274,7 @@ Our functionality for this network can be found mainly in the **Classes** direct
 }
 ```
 
-The cnn object contains 3 Json Objects (api, data, model and train) and a JSON Array (core). Api has the information used to set up your server you will need to add your local ip, data has the configuration related to preparing the training and validation data. Model holds the model file paths, and train holds the training parameters. 
+The cnn object contains 4 Json Objects (api, data, model and train) and a JSON Array (core). Api has the information used to set up your server you will need to add your local ip, data has the configuration related to preparing the training and validation data, model holds the model file paths, and train holds the training parameters. 
 
 In my case, the configuration above was the best out of my testing, but you may find different configurations work better. Feel free to update these settings to your liking, and please let us know of your experiences.
 

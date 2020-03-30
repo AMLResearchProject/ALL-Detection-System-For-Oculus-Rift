@@ -2,13 +2,15 @@
 
 ## Acute Lymphoblastic Leukemia Detection System 2020
 
-## Using AutoPilot functionality
+&nbsp;
+
+# Using AutoPilot functionality
 
 To run in autopilot we'd be utilizing 3 scripts:
 
-1. Autorun.sh
+1. AutoPilot.sh
 2. Randomizer.sh
-3. Timediff.sh
+3. TimeDiff.sh
 
 All of these are located inside the Scripts folder of the CNN Directory. So, first step is to go inside the Scripts directory.
 
@@ -19,9 +21,9 @@ cd Scripts
 From here we run
 
 ```
-sh Autorun.sh
+sh AutoPilot.sh
 ```
-**Autorun.sh** acts as a wrapper for **Script.sh** and runs all the remaining scripts. Now sit back and enjoy the ride as dependencies start installing on their own, but before you can completely relax you have to provide a couple of more inputs
+**AutoPilot.sh** acts as a wrapper for **Script.sh** and runs all the remaining scripts. Now sit back and enjoy the ride as dependencies start installing on their own, but before you can completely relax you have to provide a couple of more inputs
 
 ```
 Do you want to randomize the image transfer in Test folder? (Y/N) -
@@ -33,7 +35,9 @@ Enter path to im folder of ALL_IDB1 (in Windows path should be in format C:/User
 ```
 This one is pretty self explanatory, so path to be provided by User should be in the format C:/Users/XYZ/PML-AI-Research/ALL_IDB_Data/ALL_IDB1/im
 
-Once all this is done, Training and Testing would begin with **Timediff.sh** running each of them and recording the total time taken by each.
+Once all this is done, Training and Testing would begin with **TimeDiff.sh** running each of them and recording the total time taken by each.
+
+&nbsp;
 
 # Contributing
 

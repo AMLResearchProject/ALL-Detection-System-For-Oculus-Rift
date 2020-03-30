@@ -12,9 +12,9 @@ fi
 echo "-- Starting training"
 echo " "
 cd -
-Timediff.sh -op Train
+TimeDiff.sh -op Train
 echo "-- Finished training"
 echo "-- Starting classifying"
 echo " "
-Timediff.sh -op Classify
+TimeDiff.sh -op Classify
 echo "-- Finished classifying. Exiting Script."
