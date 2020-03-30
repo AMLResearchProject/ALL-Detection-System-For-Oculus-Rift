@@ -1,5 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
+source ~/anaconda3/etc/profile.d/conda.sh
 echo "-- Installing requirements"
 echo " "
 conda install opencv
