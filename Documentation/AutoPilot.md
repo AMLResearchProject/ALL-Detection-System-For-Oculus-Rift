@@ -10,7 +10,7 @@ To run in autopilot we'd be utilizing 3 scripts:
 
 1. AutoPilot.sh
 2. Randomizer.sh
-3. Timediff.sh
+3. TimeDiff.sh
 
 All of these are located inside the Scripts folder of the CNN Directory. So, first step is to go inside the Scripts directory.
 
