@@ -143,13 +143,11 @@ The code for this project consists of 5 main Python files and a configuration fi
 
 Our functionality for this network can be found mainly in the **Classes** directory. 
 
-|    Class | Description |
-| ------------- | ------------ |
-| Helpers.py   | [Helpers.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Helpers.py "Helpers.py") is a helper class. The class loads the configuration and logging that the project uses.      |
-| Data.py   | [Data.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Data.py "Data.py") is a data helper class. The class provides the functionality for sorting and preparing your training and validation data.  |     |
-| Augmentation.py   | [Augmentation.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Augmentation.py "Model.py") is a augmentation helper class, The class provides functionality for data augmentation.       |
-| Model.py   | [Model.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Model.py "Model.py") is a model helper class. The class provides the functionality for creating our CNN.       |
-| Server.py  | [Server.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Server.py "Server.py"): is a server helpers class. The class provides the functionality for creating our CNN    |
+- [Helpers.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Helpers.py "Helpers.py") is a helper class. The class loads the configuration and logging that the project uses.
+- [Data.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Data.py "Data.py") is a data helper class. The class provides the functionality for sorting and preparing your training and validation data.
+- [Augmentation.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Augmentation.py "Augmentation.py") is a augmentation helper class, The class provides functionality for data augmentation.
+- [Model.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Model.py "Model.py") is a model helper class. The class provides the functionality for creating our CNN. 
+- [Server.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Server.py "Server.py") is a server helpers class. The class provides the functionality for creating our CNN 
 
 #### Functions
 
@@ -157,55 +155,47 @@ Our functionality for this network can be found mainly in the **Classes** direct
 
  ##### Data.py
 
-| Function |  Description |
-| ------------ | -------- |
-| do_im_process() | The do_im_process() function augments and prepares the data. |
-| convert_data() | The convert_data() function converts the training data to a numpy array. |
-| encode_labels() | The encode_labels() function One Hot Encodes the labels. |
-| shuffle() | The shuffle() function shuffles the data helping to eliminate bias. |
-| get_split() | The get_split() function splits the prepared data and labels into training and validation data. |
-| resize() | The resize() function resizes an image. |
+- **do_im_process()** - The do_im_process() function augments and prepares the data.
+- **convert_data()** - The convert_data() function converts the training data to a numpy array.
+- **encode_labels()** - The encode_labels() function One Hot Encodes the labels.
+- **shuffle()** - The shuffle() function shuffles the data helping to eliminate bias.
+- **get_split()** - The get_split() function splits the prepared data and labels into training and validation data.
+- **resize()** - The resize() function resizes an image.
 
  ##### Augmentation.py
 
-| Function |  Description |
-| ------------ | -------- |
-| grayscale() | The grayscale() function creates a grayscale copy of an image. |
-| equalize_hist() | The equalize_hist() function creates a histogram equalized copy of an image. |
-| reflection() | The reflection() function creates a horizontally and vertically reflected copies of an image. |
-| gaussian() | The gaussian() function creates a gaussian blurred copy of an image. |
-| translate() | The translate() function creates a translated copy of an image. |
-| rotation() | The rotation() function creates rotated copy/copies of an image. |
-| shear() | The shear() function creates sheared copy of an image. |
+- **grayscale()** The grayscale() function creates a grayscale copy of an image.
+- **equalize_hist()** The equalize_hist() function creates a histogram equalized copy of an image.
+- **reflection()** The reflection() function creates a horizontally and vertically reflected copies of an image.
+- **gaussian()** The gaussian() function creates a gaussian blurred copy of an image.
+- **translate()** The translate() function creates a translated copy of an image.
+- **rotation()** The rotation() function creates rotated copy/copies of an image.
+- **shear()** The shear() function creates sheared copy of an image.
 
  ##### Model.py
 
-| Function |  Description |
-| ------------ | -------- |
-| do_data() | The do_data() creates an augmented dataset that we will use for our model training and validation. |
-| do_network() | The do_network() function creates the network architecture proposed in the [Acute Leukemia Classification Using Convolution Neural Network In Clinical Decision Support System](https://airccj.org/CSCP/vol7/csit77505.pdf "Acute Leukemia Classification Using Convolution Neural Network In Clinical Decision Support System") paper. |
-| do_train() | The do_train() function compiles and trains the model. |
-| do_evaluate() | The do_evaluate() function evaluates the model, and displays the values for the metrics we specified. |
-| do_predictions() | The do_predictions() function makes predictions on the train & test sets. |
-| visualize_metrics() | The visualize_metrics() function allows you to visualize and save the metrics plot images. |
-| confusion_matrix() | The confusion_matrix() function allows you to visualize the confusion matrix. |
-| figures_of_merit() | The figures_of_merit() calculates the figures of merit requested on the ALL-IDB website. |
-| save_weights() | The save_weights() saves the model weights. |
-| save_model_as_json() | The save_model_as_json() saves the model as JSON. |
-| load_model_and_weights() | The load_model_and_weights() loads the trained model and weights. |
-| test_classifier() | The test_classifier() tests the classifier using the test data set. |
-| send_request() | The send_request() sends a HTTP request. |
-| test_http_classifier() | The test_http_classifier() tests the server / API by sending the test data to the classifier with the API. |
-| http_classify() | The http_classify() classifies an image sent via HTTP. |
-| vr_http_classify() | The vr_http_classify() classifies an image sent via from VR via HTTP. |
-| get_predictions() | The get_predictions() gets a prediction for an image. |
-| reshape() | The reshape() reshapes an image. |
+- **do_data()** The do_data() creates an augmented dataset that we will use for our model training and validation.
+- **do_network()** The do_network() function creates the network architecture proposed in the [Acute Leukemia Classification Using Convolution Neural Network In Clinical Decision Support System](https://airccj.org/CSCP/vol7/csit77505.pdf "Acute Leukemia Classification Using Convolution Neural Network In Clinical Decision Support System") paper.
+- **do_train()** The do_train() function compiles and trains the model.
+- **do_evaluate()** The do_evaluate() function evaluates the model, and displays the values for the metrics we specified.
+- **do_predictions()** The do_predictions() function makes predictions on the train & test sets.
+- **visualize_metrics()** The visualize_metrics() function allows you to visualize and save the metrics plot images.
+- **confusion_matrix()** The confusion_matrix() function allows you to visualize the confusion matrix.
+- **figures_of_merit()** The figures_of_merit() calculates the figures of merit requested on the ALL-IDB website.
+- **save_weights()** The save_weights() saves the model weights.
+- **save_model_as_json()** The save_model_as_json() saves the model as JSON.
+- **load_model_and_weights()** The load_model_and_weights() loads the trained model and weights.
+- **test_classifier()** The test_classifier() tests the classifier using the test data set.
+- **send_request()** The send_request() sends a HTTP request.
+- **test_http_classifier()** The test_http_classifier() tests the server / API by sending the test data to the classifier with the API.
+- **http_classify()** The http_classify() classifies an image sent via HTTP.
+- **vr_http_classify()** The vr_http_classify() classifies an image sent via from VR via HTTP.
+- **get_predictions()** The get_predictions() gets a prediction for an image.
+- **reshape()** The reshape() reshapes an image.
 
  ##### Server.py
 
-| Function |  Description |
-| --------- | -------- |
-| start() | The start() starts the classification API server. |
+- **start()** The start() starts the classification API server.
 
 &nbsp;
 
