@@ -2,6 +2,8 @@
 
 ## Acute Lymphoblastic Leukemia Detection System 2020
 
+&nbsp;
+
 # AllDS2020 CNN
 
 ## Introduction

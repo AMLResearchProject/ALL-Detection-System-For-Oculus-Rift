@@ -2,6 +2,8 @@
 
 ## Acute Lymphoblastic Leukemia Detection System 2020
 
+&nbsp;
+
 # Anaconda Installation
 
 Anaconda lets you create virtual environments for your projects. Within the environments you can install Python packages that will not interfere with your core Python installations. A particularly useful feature is that you are able to spin up an environment with Tensorflow GPU in a few seconds, this installation is separate from you system installation meaning you can play around without causing issues. 
