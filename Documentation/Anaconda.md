@@ -2,11 +2,11 @@
 
 ## Acute Lymphoblastic Leukemia Detection System 2020
 
-&nbsp;
-
 # Anaconda Installation
 
 Anaconda lets you create virtual environments for your projects. Within the environments you can install Python packages that will not interfere with your core Python installations. A particularly useful feature is that you are able to spin up an environment with Tensorflow GPU in a few seconds, this installation is separate from you system installation meaning you can play around without causing issues. 
+
+&nbsp;
 
 ## Installation
 
@@ -59,8 +59,6 @@ And you can deactivate an environment using the following:
 conda deactivate
 ```
 
-&nbsp;
-
 # Contributing
 
 The Peter Moss Acute Myeloid & Lymphoblastic Leukemia AI Research project encourages and welcomes code contributions, bug fixes and enhancements from the Github.
@@ -77,9 +75,13 @@ Please read the [CONTRIBUTING](https://github.com/AMLResearchProject/ALL-Detecti
 
 We use SemVer for versioning. For the versions available, see [Releases](https://github.com/AMLResearchProject/ALL-Detection-System-2020/releases "Releases").
 
+&nbsp;
+
 # License
 
 This project is licensed under the **MIT License** - see the [LICENSE](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/LICENSE "LICENSE") file for details.
+
+&nbsp;
 
 # Bugs/Issues
 

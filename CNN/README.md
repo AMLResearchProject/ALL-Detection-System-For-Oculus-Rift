@@ -6,9 +6,11 @@
 
 ## Introduction
 
-This project is the classifier that is used in Acute the Lymphoblastic Leukemia Detection System 2020. The network provided in this project was originally created in [ALL research papers evaluation project](https://github.com/leukemiaresearchassociation/ALL-IDB-Classifiers/blob/master/Python/Tensorflow/2-0/Classification/ALL-Papers/Evaluations/Paper-1.md "ALL research papers evaluation project"), where we replicated the network proposed in the [Acute Leukemia Classification Using Convolution Neural Network In Clinical Decision Support System](https://airccj.org/CSCP/vol7/csit77505.pdf "Acute Leukemia Classification Using Convolution Neural Network In Clinical Decision Support System") paper by Thanh.TTP, Giao N. Pham, Jin-Hyeok Park, Kwang-Seok Moon, Suk-Hwan Lee, and Ki-Ryong Kwon, and the data augmentation proposed in  [Leukemia Blood Cell Image Classification Using Convolutional Neural Network](http://www.ijcte.org/vol10/1198-H0012.pdf "Leukemia Blood Cell Image Classification Using Convolutional Neural Network") by T. T. P. Thanh, Caleb Vununu, Sukhrob Atoev, Suk-Hwan Lee, and Ki-Ryong Kwon. The original project was inspired by the [work](https://github.com/AmlResearchProject/AML-ALL-Classifiers/blob/master/Python/_Keras/QuantisedCode/QuantisedCode.ipynb "work") done by [Amita Kapoor](https://www.leukemiaresearchassociation.ai/team/amita-kapoor/profile "Amita Kapoor") and [Taru Jain](https://www.leukemiaresearchassociation.ai/student-program/student/taru-jain "Taru Jain") and Adam's [projects](https://github.com/AMLResearchProject/AML-ALL-Classifiers/tree/master/Python/_Keras/AllCNN "projects") based on their work.
+This project is the classifier that is used in Acute the Lymphoblastic Leukemia Detection System 2020. The network provided in this project was originally created in [ALL research papers evaluation project](https://github.com/leukemiaresearchassociation/ALL-IDB-Classifiers/blob/master/Python/Tensorflow/2-0/Classification/ALL-Papers/Evaluations/Paper-1.md "ALL research papers evaluation project"), where we replicated the network proposed in the [Acute Leukemia Classification Using Convolution Neural Network In Clinical Decision Support System](https://airccj.org/CSCP/vol7/csit77505.pdf "Acute Leukemia Classification Using Convolution Neural Network In Clinical Decision Support System") paper by Thanh.TTP, Giao N. Pham, Jin-Hyeok Park, Kwang-Seok Moon, Suk-Hwan Lee, and Ki-Ryong Kwon, and the data augmentation proposed in  [Leukemia Blood Cell Image Classification Using Convolutional Neural Network](http://www.ijcte.org/vol10/1198-H0012.pdf "Leukemia Blood Cell Image Classification Using Convolutional Neural Network") by T. T. P. Thanh, Caleb Vununu, Sukhrob Atoev, Suk-Hwan Lee, and Ki-Ryong Kwon. The original project was inspired by the [work](https://github.com/AmlResearchProject/AML-ALL-Classifiers/blob/master/Python/_Keras/QuantisedCode/QuantisedCode.ipynb "work") done by [Amita Kapoor](https://www.petermossamlallresearch.com/team/amita-kapoor/profile "Amita Kapoor") and [Taru Jain](https://www.petermossamlallresearch.com/students/student/taru-jain/profile "Taru Jain") and Adam's [projects](https://github.com/AMLResearchProject/AML-ALL-Classifiers/tree/master/Python/_Keras/AllCNN "projects") based on their work.
 
 _This is a high level tutorial for those that have little to no programming experience allowing them to use the system. In the coming weeks a series of low level articles will be published on our [Medium](https://medium.com/leukemiaairesearch "Medium") for the more experienced developers._
+
+&nbsp;
 
 ## Results Overview
 
@@ -20,18 +22,11 @@ Below are the results from individual training sessions.
 
 | Hardware | Training | Validation | Test | Accuracy | Recall | Precision | AUC/ROC |
 | -------------------- | -------------------- | ----- | ---------- | ---------- | ---------- | ---------- | ---------- |
-| NVIDIA GTX 1050 Ti Ti/PCIe/SSE2 | 1180 |  404 | 20 |  0.97772276 | 0.97772276 | 0.97772276 | 0.9945594 |
-| Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8   | 1180 |  404 | 20 |  0.9752475 | 0.9752475 | 0.9752475 | 0.991492 |
-| Intel® Core™ i5 CPU @ 2.4 GHz   | 1180 |  404 | 20 |  0.9589041 | 0.9589041 | 0.9589041 | 0.99483955 |
-
-# Hardware
-
-- Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8 
-- GeForce GTX 1050 Ti/PCIe/SSE2
-
-# OS 
-
-- Ubuntu 18.04 64-bit
+| Windows 10 | NVIDIA GeoForce GTX 1060 | 1180 |  404 | 20 |  0.97066015 | 0.97066015 | 0.97066015 | 0.9908836 |
+| Ubuntu 18.04 | NVIDIA GTX 1050 Ti Ti/PCIe/SSE2 | 1180 |  404 | 20 |  0.97772276 | 0.97772276 | 0.97772276 | 0.9945594 |
+| Ubuntu 18.04 | Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8   | 1180 |  404 | 20 |  0.9752475 | 0.9752475 | 0.9752475 | 0.991492 |
+| Windows 10 | Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8   | 1180 |  404 | 20 |  0.9851485 | 0.9851485 | 0.9851485 | 0.9985846 |
+| Ubuntu 18.04 | Intel® Core™ i5 CPU @ 2.4 GHz   | 1180 |  404 | 20 |  0.9589041 | 0.9589041 | 0.9589041 | 0.99483955 |
 
 # Programming Language
 
@@ -44,17 +39,31 @@ In this project we have used the following softwares:
 - Anaconda
 - Tensorflow 2 GPU
 
+&nbsp;
+
 # Installation
 
 ## Anaconda
 
 If you haven't already installed Anaconda and set up your conda env and Tensorflow installation, please follow our [Anaconda installation guide](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/Documentation/Anaconda.md "Anaconda installation guide"). 
 
-All other requirements should be included in **Setup.sh** you can run this file on Linux or Mac by navigating to the **CNN** directory in terminal and using the command below:
+## Setup.sh
+
+All other requirements are included in **Setup.sh**. You can run this file on machine by navigating to the **CNN** directory in terminal and using the command below:
 
 ```
 sh Setup.sh
 ```
+
+## Windows Installation Issue(s)
+
+If you're working on a Windows 10 machine and facing some issues, please follow our [Windows Issues guide](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/Documentation/WindowsIssues.md "Windows Issues guide"). In case your issue is not mentioned and you're able to solve it, do create a pull request mentioning the same in the aforementioned file.
+
+## Autorun Scripts
+
+If you would like to replicate the exact scenarios we tested in or simply like to put the entire process in Autopilot, please follow our [Autopilot guide](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/Documentation/Autopilot.md "Autopilot guide"). 
+
+&nbsp;
 
 # Network Architecture
 
@@ -73,6 +82,8 @@ We will build a Convolutional Neural Network, as shown in Fig 1, consisting of t
 - Max-Pooling layer (50x50x30)
 - Fully Connected layer (2 neurons)
 - Softmax layer (Output 2)
+
+&nbsp;
 
 # Getting Started
 
@@ -189,6 +200,8 @@ Our functionality for this network can be found mainly in the **Classes** direct
 | --------- | -------- |
 | start() | The start() starts the classification API server. |
 
+&nbsp;
+
 # Configuration
 
 [config.json](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Model/config.json "config.json")  holds the configuration for our network. 
@@ -267,6 +280,8 @@ The cnn object contains 3 Json Objects (api, data, model and train) and a JSON A
 
 In my case, the configuration above was the best out of my testing, but you may find different configurations work better. Feel free to update these settings to your liking, and please let us know of your experiences.
 
+&nbsp;
+
 # Metrics
 
 We can use metrics to measure the effectiveness of our model. In this network we will use the following metrics:
@@ -279,6 +294,8 @@ tf.keras.metrics.AUC(name='auc')
 ```
 
 These metrics will be displayed and plotted once our model is trained.  A useful tutorial while working on the metrics was the [Classification on imbalanced data](https://www.tensorflow.org/tutorials/structured_data/imbalanced_data) tutorial on Tensorflow's website.
+
+&nbsp;
 
 # Training the model
 
@@ -406,6 +423,8 @@ _Fig 6. Ubuntu/GTX 1050 ti AUC_
 | Sensitivity / Recall | 0.9794521   | 0.98% |
 | Specificity          | 0.9815668202764977  | 99% |
 
+&nbsp;
+
 # Local Testing
 
 Now we will use the test data to see how the classifier reacts to our testing data. Real world testing is the most important testing, as it allows you to see the how the model performs in a real world environment. 
@@ -465,6 +484,8 @@ python AllDS2020.py Classify
 2020-03-12 05:08:20,919 - Model - INFO - True Negatives: 7
 2020-03-12 05:08:20,920 - Model - INFO - False Negatives: 1
 ```
+
+&nbsp;
 
 # Server Testing
 
@@ -558,6 +579,8 @@ python AllDS2020.py Client
 2020-03-12 05:21:34,844 - Model - INFO - False Negatives: 1
 ```
 
+&nbsp;
+
 # Contributing
 
 The Peter Moss Acute Myeloid & Lymphoblastic Leukemia AI Research project encourages and welcomes code contributions, bug fixes and enhancements from the Github.
@@ -566,19 +589,25 @@ Please read the [CONTRIBUTING](https://github.com/AMLResearchProject/ALL-Detecti
 
 ## Contributors
 
-- **AUTHOR:** [Adam Milton-Barker](https://www.leukemiaresearchassociation.ai/team/adam-milton-barker "Adam Milton-Barker") - [Peter Moss Leukemia AI Research](https://www.leukemiaresearchassociation.ai "Peter Moss Leukemia AI Research") founder & Intel Software Innovator, Sabadell, Spain
+- **AUTHOR:** [Adam Milton-Barker](https://www.petermossamlallresearch.com/team/adam-milton-barker/profile "Adam Milton-Barker") - [Peter Moss Leukemia AI Research](https://www.leukemiaresearchassociation.ai "Peter Moss Leukemia AI Research") founder & Intel Software Innovator, Sabadell, Spain
 
-- **TESTING:** [Rishabh Banga](https://www.leukemiaresearchassociation.ai/team/rishabh-banga "Rishabh Banga") - [Peter Moss Leukemia AI Research](https://www.leukemiaresearchassociation.ai "Peter Moss Leukemia AI Research") & Intel Software Innovator, Dehli, India
+- **TESTER:** [Rishabh Banga](https://www.petermossamlallresearch.com/team/rishabh-banga/profile "Rishabh Banga") - [Peter Moss Leukemia AI Research](https://www.leukemiaresearchassociation.ai "Peter Moss Leukemia AI Research") & Intel Software Innovator, Delhi, India
 
-- **TESTING:** [Javier Lopez Alonso](https://www.leukemiaresearchassociation.ai/team/javier-lopez-alonso "Javier Lopez Alonso") - [Peter Moss Leukemia AI Research](https://www.leukemiaresearchassociation.ai "Peter Moss Leukemia AI Research") co-founder, Barcelona, Spain
+- **TESTER:** [Javier Lopez Alonso](https://www.leukemiaresearchassociation.ai/team/javier-lopez-alonso "Javier Lopez Alonso") - [Peter Moss Leukemia AI Research](https://www.leukemiaresearchassociation.ai "Peter Moss Leukemia AI Research") Co-Founder, Barcelona, Spain
+
+&nbsp;
 
 # Versioning
 
 We use SemVer for versioning. For the versions available, see [Releases](https://github.com/AMLResearchProject/ALL-Detection-System-2020/releases "Releases").
 
+&nbsp;
+
 # License
 
 This project is licensed under the **MIT License** - see the [LICENSE](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/LICENSE "LICENSE") file for details.
+
+&nbsp;
 
 # Bugs/Issues
 

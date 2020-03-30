@@ -16,15 +16,21 @@ If you would like to contribute by suggesting features for the project, please r
 
 If you would like to contribute new features to the project, please raise a **Feature proposal** issue in the [ALL-IDB Classifiers repository issues](https://github.com/AMLResearchProject/ALL-Detection-System-2020/issues/new) section. A template is provided that will allow you to provide your suggestions for your feature proposal which will be reviewed by the team who will communicate through your issue.
 
+&nbsp;
+
 # Creating a fork of the repository
 
 ![Creating a fork of the repository](https://www.leukemiaresearchfoundation.ai/github/media/images/Contributing-Fork.jpg)
 If you are going to be contributing code or documentation to the repository you will need to make a fork of the current development branch. The current development branch will always be the highest branch or master. Once you have created a fork of the repository, you will be able to clone the repository to a location on your development machine using terminal and Git or Github Desktop if using Windows.
 
+&nbsp;
+
 # Push changes to forked repository
 
 ![Push changes to forked repository](https://www.leukemiaresearchfoundation.ai/github/media/images/Contributing-Commit-Push.jpg)
 When you have made your changes, you need to push them to your forked repository. This process requires a commit with a message about what your commit is, and then finally a push to the repository which will place your changes or created files to your forked repository.
+
+&nbsp;
 
 # Pull requests
 
@@ -41,6 +47,8 @@ When you are satisfied with your changes you can submit a pull request that will
 6. Incude the Contributing, Versioning, Licensing, Bugs/Issues information in all READMEs and documentation.
 7. Submit your Pull Request with an accurate descrription of the changes you have made.
 8. Your Pull Request will be reviewed by the team.
+
+&nbsp;
 
 # Code of conduct
 
@@ -84,6 +92,8 @@ This Code of Conduct applies both within project spaces and in public spaces whe
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at info@leukemiaresearchfoundation.ai All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
 
 Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
+
+&nbsp;
 
 # Attribution
 
