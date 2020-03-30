@@ -6,6 +6,8 @@
 
 ![Peter Moss Acute Myeloid & Lymphoblastic Leukemia AI Research Project](Media/Images/AllVrCNN.jpg)
 
+&nbsp;
+
 # Introduction
 
 The Acute Lymphoblastic Leukemia Detection System 2020 uses Tensorflow 2 & Oculus Rift to provide a virtual diagnosis system.
@@ -13,6 +15,8 @@ The Acute Lymphoblastic Leukemia Detection System 2020 uses Tensorflow 2 & Oculu
 This project is made up of a number of components which work together as a network to make the system work. Follow the completed tutorials below in the provided order. The classifiers can be run indvidually but a full system setup requires the [Tensorflow 2.0 CNN](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN "Tensorflow 2.0 CNN"), [Virtual Reality (Oculus Rift)](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/Rift "Oculus Rift"), [NLU](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/NLU "NLU"), and [Arduino IoT Alarm](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/Arduino "Arduino IoT Alarm") tutorials to be completed.
 
 _This is a high level tutorial for those with little or no programming experience. In future articles I will go into the low level workings of the project._
+
+&nbsp;
 
 # Classifier Results Overview
 
@@ -30,6 +34,8 @@ Below are the results from individual training sessions.
 | Windows 10 | Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8   | 1180 |  404 | 20 |  0.9851485 | 0.9851485 | 0.9851485 | 0.9985846 |
 | Ubuntu 18.04 | Intel® Core™ i5 CPU @ 2.4 GHz   | 1180 |  404 | 20 |  0.9589041 | 0.9589041 | 0.9589041 | 0.99483955 |
 
+&nbsp;
+
 # Clone the repository
 
 Clone the [ALL-Detection-System-2020](https://github.com/AMLResearchProject/ALL-Detection-System-2020 "ALL-Detection-System-2020") repository from the [Peter Moss Acute Myeloid & Lymphoblastic Leukemia AI Research Project](hhttps://github.com/AMLResearchProject "Peter Moss Acute Myeloid & Lymphoblastic Leukemia AI Research Project") Github Organization. 
@@ -44,6 +50,8 @@ The **-b "0.0.2"** parameter ensures you get the code from the latest developmen
 
 Once you have used the command above you will see a directory called **ALL-Detection-System-2020** in the location you chose to clone to. In terminal, navigate to the **ALL-Detection-System-2020** directory, this is your project root directory.
 
+&nbsp;
+
 # ALL-IDB
 
 You need to be granted access to use the Acute Lymphoblastic Leukemia Image Database for Image Processing dataset. You can find the application form and information about getting access to the dataset on [this page](https://homes.di.unimi.it/scotti/all/#download) as well as information on how to contribute back to the project [here](https://homes.di.unimi.it/scotti/all/results.php). If you are not able to obtain a copy of the dataset please feel free to try this tutorial on your own dataset, we would be very happy to find additional AML & ALL datasets.
@@ -54,6 +62,7 @@ In this project, [ALL-IDB1](https://homes.di.unimi.it/scotti/all/#datasets) is u
 
 "The ALL_IDB1 version 1.0 can be used both for testing segmentation capability of algorithms, as well as the classification systems and image preprocessing methods. This dataset is composed of 108 images collected during September, 2005. It contains about 39000 blood elements, where the lymphocytes has been labeled by expert oncologists. The images are taken with different magnifications of the microscope ranging from 300 to 500."
 
+&nbsp;
 
 # Build Your Acute Lymphoblastic Leukemia Detection System 2020
 
@@ -82,13 +91,19 @@ Please read the [CONTRIBUTING](https://github.com/AMLResearchProject/ALL-Detecti
 
 - **TESTER:** [Javier Lopez Alonso](https://www.leukemiaresearchassociation.ai/team/javier-lopez-alonso "Javier Lopez Alonso") - [Peter Moss Leukemia AI Research](https://www.leukemiaresearchassociation.ai "Peter Moss Leukemia AI Research") Co-Founder, Barcelona, Spain
 
+&nbsp;
+
 # Versioning
 
 We use SemVer for versioning. For the versions available, see [Releases](https://github.com/AMLResearchProject/ALL-Detection-System-2020/releases "Releases").
 
+&nbsp;
+
 # License
 
 This project is licensed under the **MIT License** - see the [LICENSE](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/LICENSE "LICENSE") file for details.
+
+&nbsp;
 
 # Bugs/Issues
 

@@ -6,6 +6,8 @@
 
 Anaconda lets you create virtual environments for your projects. Within the environments you can install Python packages that will not interfere with your core Python installations. A particularly useful feature is that you are able to spin up an environment with Tensorflow GPU in a few seconds, this installation is separate from you system installation meaning you can play around without causing issues. 
 
+&nbsp;
+
 ## Installation
 
 ```
@@ -67,13 +69,19 @@ Please read the [CONTRIBUTING](https://github.com/AMLResearchProject/ALL-Detecti
 
 - **AUTHOR:** [Adam Milton-Barker](https://www.leukemiaresearchassociation.ai/ "Adam Milton-Barker") - [Peter Moss Leukemia AI Research](https://www.leukemiaresearchassociation.ai "Peter Moss Leukemia AI Research") founder & Intel Software Innovator, Sabadell, Spain
 
+&nbsp;
+
 # Versioning
 
 We use SemVer for versioning. For the versions available, see [Releases](https://github.com/AMLResearchProject/ALL-Detection-System-2020/releases "Releases").
 
+&nbsp;
+
 # License
 
 This project is licensed under the **MIT License** - see the [LICENSE](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/LICENSE "LICENSE") file for details.
+
+&nbsp;
 
 # Bugs/Issues
 

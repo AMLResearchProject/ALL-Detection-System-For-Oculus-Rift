@@ -4,20 +4,19 @@
 
 ## Using AutoPilot functionality
 
-To run in autopilot we'd be utilizing 4 scripts:
+To run in autopilot we'd be utilizing 3 scripts:
 
-1. ScriptsSetup.sh
-2. Autorun.sh
-3. Randomizer.sh
-4. Timediff.sh
+1. Autorun.sh
+2. Randomizer.sh
+3. Timediff.sh
 
-All of these are located inside the Scripts folder of the CNN Directory. From here we run
+All of these are located inside the Scripts folder of the CNN Directory. So, first step is to go inside the Scripts directory.
 
 ```
-sh ScriptsSetup.sh
+cd Scripts
 ```
 
-**ScriptsSetup.sh** transfer all the 3 scripts to their respective folders and from their internally runs 
+From here we run
 
 ```
 sh Autorun.sh
@@ -42,6 +41,8 @@ The Peter Moss Acute Myeloid & Lymphoblastic Leukemia AI Research project encour
 
 Please read the [CONTRIBUTING](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/CONTRIBUTING.md "CONTRIBUTING") document for a full guide to forking our repositories and submitting your pull requests. You will also find information about our code of conduct on this page.
 
+&nbsp;
+
 ## Contributors
 
 - **AUTHOR:** [Rishabh Banga](https://www.petermossamlallresearch.com/team/rishabh-banga/profile "Rishabh Banga") - [Peter Moss Leukemia AI Research](https://www.leukemiaresearchassociation.ai "Peter Moss Leukemia AI Research") & Intel Software Innovator, Delhi, India
@@ -50,9 +51,13 @@ Please read the [CONTRIBUTING](https://github.com/AMLResearchProject/ALL-Detecti
 
 We use SemVer for versioning. For the versions available, see [Releases](https://github.com/AMLResearchProject/ALL-Detection-System-2020/releases "Releases").
 
+&nbsp;
+
 # License
 
 This project is licensed under the **MIT License** - see the [LICENSE](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/LICENSE "LICENSE") file for details.
+
+&nbsp;
 
 # Bugs/Issues
 

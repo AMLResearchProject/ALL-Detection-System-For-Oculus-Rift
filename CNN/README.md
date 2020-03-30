@@ -10,6 +10,8 @@ This project is the classifier that is used in Acute the Lymphoblastic Leukemia 
 
 _This is a high level tutorial for those that have little to no programming experience allowing them to use the system. In the coming weeks a series of low level articles will be published on our [Medium](https://medium.com/leukemiaairesearch "Medium") for the more experienced developers._
 
+&nbsp;
+
 ## Results Overview
 
 We have tested our model on a number of different hardwares, including Intel® CPUs & NVIDIA GPUs. Results seem to vary between CPU & GPU, and tests show further investigation into seeding and randomness introduced to our network via the GPU software. For reproducible results every time, it is suggested to train on a CPU, although this obviously requires more time.
@@ -37,6 +39,8 @@ In this project we have used the following softwares:
 - Anaconda
 - Tensorflow 2 GPU
 
+&nbsp;
+
 # Installation
 
 ## Anaconda
@@ -59,6 +63,8 @@ If you're working on a Windows 10 machine and facing some issues, please follow 
 
 If you would like to replicate the exact scenarios we tested in or simply like to put the entire process in Autopilot, please follow our [Autopilot guide](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/Documentation/Autopilot.md "Autopilot guide"). 
 
+&nbsp;
+
 # Network Architecture
 
 <img src="https://www.leukemiaresearchfoundation.ai/github/media/images/paper_1_architecture.png" alt="Proposed Architecture" />
@@ -76,6 +82,8 @@ We will build a Convolutional Neural Network, as shown in Fig 1, consisting of t
 - Max-Pooling layer (50x50x30)
 - Fully Connected layer (2 neurons)
 - Softmax layer (Output 2)
+
+&nbsp;
 
 # Getting Started
 
@@ -192,6 +200,8 @@ Our functionality for this network can be found mainly in the **Classes** direct
 | --------- | -------- |
 | start() | The start() starts the classification API server. |
 
+&nbsp;
+
 # Configuration
 
 [config.json](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Model/config.json "config.json")  holds the configuration for our network. 
@@ -270,6 +280,8 @@ The cnn object contains 3 Json Objects (api, data, model and train) and a JSON A
 
 In my case, the configuration above was the best out of my testing, but you may find different configurations work better. Feel free to update these settings to your liking, and please let us know of your experiences.
 
+&nbsp;
+
 # Metrics
 
 We can use metrics to measure the effectiveness of our model. In this network we will use the following metrics:
@@ -282,6 +294,8 @@ tf.keras.metrics.AUC(name='auc')
 ```
 
 These metrics will be displayed and plotted once our model is trained.  A useful tutorial while working on the metrics was the [Classification on imbalanced data](https://www.tensorflow.org/tutorials/structured_data/imbalanced_data) tutorial on Tensorflow's website.
+
+&nbsp;
 
 # Training the model
 
@@ -409,6 +423,8 @@ _Fig 6. Ubuntu/GTX 1050 ti AUC_
 | Sensitivity / Recall | 0.9794521   | 0.98% |
 | Specificity          | 0.9815668202764977  | 99% |
 
+&nbsp;
+
 # Local Testing
 
 Now we will use the test data to see how the classifier reacts to our testing data. Real world testing is the most important testing, as it allows you to see the how the model performs in a real world environment. 
@@ -468,6 +484,8 @@ python AllDS2020.py Classify
 2020-03-12 05:08:20,919 - Model - INFO - True Negatives: 7
 2020-03-12 05:08:20,920 - Model - INFO - False Negatives: 1
 ```
+
+&nbsp;
 
 # Server Testing
 
@@ -561,6 +579,8 @@ python AllDS2020.py Client
 2020-03-12 05:21:34,844 - Model - INFO - False Negatives: 1
 ```
 
+&nbsp;
+
 # Contributing
 
 The Peter Moss Acute Myeloid & Lymphoblastic Leukemia AI Research project encourages and welcomes code contributions, bug fixes and enhancements from the Github.
@@ -575,13 +595,19 @@ Please read the [CONTRIBUTING](https://github.com/AMLResearchProject/ALL-Detecti
 
 - **TESTER:** [Javier Lopez Alonso](https://www.leukemiaresearchassociation.ai/team/javier-lopez-alonso "Javier Lopez Alonso") - [Peter Moss Leukemia AI Research](https://www.leukemiaresearchassociation.ai "Peter Moss Leukemia AI Research") Co-Founder, Barcelona, Spain
 
+&nbsp;
+
 # Versioning
 
 We use SemVer for versioning. For the versions available, see [Releases](https://github.com/AMLResearchProject/ALL-Detection-System-2020/releases "Releases").
 
+&nbsp;
+
 # License
 
 This project is licensed under the **MIT License** - see the [LICENSE](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/LICENSE "LICENSE") file for details.
+
+&nbsp;
 
 # Bugs/Issues
 
