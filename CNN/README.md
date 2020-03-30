@@ -149,6 +149,7 @@ Our functionality for this network can be found mainly in the **Classes** direct
 - [Model.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Model.py "Model.py") is a model helper class. The class provides the functionality for creating our CNN. 
 - [Server.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Server.py "Server.py") is a server helpers class. The class provides the functionality for creating our CNN 
 
+
 #### Functions
 
  The main functions are briefly explained below:
