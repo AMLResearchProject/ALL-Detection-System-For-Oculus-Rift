@@ -6,10 +6,10 @@
 #
 # Author:        Adam Milton-Barker (AdamMiltonBarker.com)
 # Contributors:
-# Title:         Model helper class
+# Title:         Model Class
 # Description:   Model functions for the Tensorflow 2.0 AllDS2020 CNN.
 # License:       MIT License
-# Last Modified: 2020-03-12
+# Last Modified: 2020-06-30
 #
 ############################################################################################
 
@@ -33,7 +33,7 @@ from Classes.Data import Data
 
 
 class Model():
-    """ Model helper class
+    """ Model Class
     
     Model functions for the Tensorflow 2.0 AllDS2020 CNN.
     """
@@ -156,6 +156,7 @@ class Model():
         plt.legend(['Train', 'Validate'], loc='upper left')
         plt.savefig('Model/Plots/Accuracy.png')
         plt.show()
+        plt.clf()
         
         plt.plot(self.history.history['loss'])
         plt.plot(self.history.history['val_loss'])
@@ -165,6 +166,7 @@ class Model():
         plt.legend(['Train', 'Validate'], loc='upper left')
         plt.savefig('Model/Plots/Loss.png')
         plt.show()
+        plt.clf()
         
         plt.plot(self.history.history['auc'])
         plt.plot(self.history.history['val_auc'])
@@ -174,6 +176,7 @@ class Model():
         plt.legend(['Train', 'Validate'], loc='upper left')
         plt.savefig('Model/Plots/AUC.png')
         plt.show()
+        plt.clf()
         
         plt.plot(self.history.history['precision'])
         plt.plot(self.history.history['val_precision'])
@@ -183,6 +186,7 @@ class Model():
         plt.legend(['Train', 'Validate'], loc='upper left')
         plt.savefig('Model/Plots/Precision.png')
         plt.show()
+        plt.clf()
         
         plt.plot(self.history.history['recall'])
         plt.plot(self.history.history['val_recall'])
@@ -192,6 +196,7 @@ class Model():
         plt.legend(['Train', 'Validate'], loc='upper left')
         plt.savefig('Model/Plots/Recall.png')
         plt.show()
+        plt.clf()
         
     def confusion_matrix(self):
         """ Prints/displays the confusion matrix. """
@@ -211,6 +216,7 @@ class Model():
         plt.colorbar()
         plt.savefig('Model/Plots/Confusion-Matrix.png')
         plt.show()
+        plt.clf()
             
     def figures_of_merit(self):
         """ Calculates/prints the figures of merit. 
@@ -268,17 +274,17 @@ class Model():
             
         self.Helpers.logger.info("Model loaded ")
         
-        self.tf_model.summary() 
-        
+        self.tf_model.summary()
+
     def test_classifier(self):
         """ Tests the trained model. """
-        
+
         files = 0
         tp = 0
         fp = 0
         tn = 0
         fn = 0
-        
+
         for testFile in os.listdir(self.testing_dir):
             if os.path.splitext(testFile)[1] in self.valid:
 
@@ -287,28 +293,28 @@ class Model():
 
                 img = cv2.imread(fileName).astype(np.float32)
                 self.Helpers.logger.info("Loaded test image " + fileName)
-                    
-                img = cv2.resize(img, (self.Helpers.confs["cnn"]["data"]["dim"], 
+
+                img = cv2.resize(img, (self.Helpers.confs["cnn"]["data"]["dim"],
                                        self.Helpers.confs["cnn"]["data"]["dim"]))
                 img = self.reshape(img)
-        
+
                 prediction = self.get_predictions(img)
-                
+
                 msg = ""
                 if prediction == 1 and "_1." in testFile:
                     tp += 1
-                    msg = "ALL correctly detected (True Positive)"
+                    msg = "Acute Lymphoblastic Leukemia correctly detected (True Positive)"
                 elif prediction == 1 and "_0." in testFile:
                     fp += 1
-                    msg = "ALL incorrectly detected (False Positive)"
+                    msg = "Acute Lymphoblastic Leukemia incorrectly detected (False Positive)"
                 elif prediction == 0 and "_0." in testFile:
                     tn += 1
-                    msg = "ALL correctly not detected (True Negative)"
+                    msg = "Acute Lymphoblastic Leukemia correctly not detected (True Negative)"
                 elif prediction == 0 and "_1." in testFile:
                     fn += 1
-                    msg = "ALL incorrectly not detected (False Negative)"
+                    msg = "Acute Lymphoblastic Leukemia incorrectly not detected (False Negative)"
                 self.Helpers.logger.info(msg)
-                    
+
         self.Helpers.logger.info("Images Classifier: " + str(files))
         self.Helpers.logger.info("True Positives: " + str(tp))
         self.Helpers.logger.info("False Positives: " + str(fp))
@@ -319,20 +325,19 @@ class Model():
         """ Sends image to the inference API endpoint. """
 
         self.Helpers.logger.info("Sending request for: " + img_path)
-        
+
         _, img_encoded = cv2.imencode('.png', cv2.imread(img_path))
         response = requests.post(
             self.addr, data=img_encoded.tostring(), headers=self.headers)
         response = json.loads(response.text)
-        
+
         return response
 
     def test_http_classifier(self):
         """ Tests the trained model via HTTP. """
-        
+
         msg = ""
-        result = ""
-        
+
         files = 0
         tp = 0
         fp = 0
@@ -345,29 +350,29 @@ class Model():
 
         for data in os.listdir(self.testing_dir):
             if os.path.splitext(data)[1] in self.valid:
-                
+
                 response = self.send_request(self.testing_dir + "/" + data)
-                
+
                 msg = ""
-                if response["Classification"] == 1 and "_1." in data:
+                if response["Diagnosis"] == "Positive" and "_1." in data:
                     tp += 1
-                    msg = "ALL correctly detected (True Positive)"
-                elif response["Classification"] == 1 and "_0." in data:
+                    msg = "Acute Lymphoblastic Leukemia correctly detected (True Positive)"
+                elif response["Diagnosis"] == "Positive" and "_0." in data:
                     fp += 1
-                    msg = "ALL incorrectly detected (False Positive)"
-                elif response["Classification"] == 0 and "_0." in data:
+                    msg = "Acute Lymphoblastic Leukemia incorrectly detected (False Positive)"
+                elif response["Diagnosis"] == "Negative" and "_0." in data:
                     tn += 1
-                    msg = "ALL correctly not detected (True Negative)"
-                elif response["Classification"] == 0 and "_1." in data:
+                    msg = "Acute Lymphoblastic Leukemia correctly not detected (True Negative)"
+                elif response["Diagnosis"] == "Negative" and "_1." in data:
                     fn += 1
-                    msg = "ALL incorrectly not detected (False Negative)"
-                
+                    msg = "Acute Lymphoblastic Leukemia incorrectly not detected (False Negative)"
+
                 files += 1
-                
+
                 self.Helpers.logger.info(msg)
                 print()
                 time.sleep(7)
-                    
+
         self.Helpers.logger.info("Images Classifier: " + str(files))
         self.Helpers.logger.info("True Positives: " + str(tp))
         self.Helpers.logger.info("False Positives: " + str(fp))
@@ -376,41 +381,40 @@ class Model():
 
     def http_classify(self, req):
         """ Classifies an image sent via HTTP. """
-            
+
         if len(req.files) != 0:
             img = np.fromstring(req.files['file'].read(), np.uint8)
         else:
             img = np.fromstring(req.data, np.uint8)
-            
+
         img = cv2.imdecode(img, cv2.IMREAD_UNCHANGED)
-        img = cv2.resize(img, (self.Helpers.confs["cnn"]["data"]["dim"], 
-                                self.Helpers.confs["cnn"]["data"]["dim"]))
+        img = cv2.resize(img, (self.Helpers.confs["cnn"]["data"]["dim"],
+                               self.Helpers.confs["cnn"]["data"]["dim"]))
         img = self.reshape(img)
-        
-        return self.Helpers.confs["cnn"]["data"]["labels"][self.get_predictions(img)]
+
+        return self.get_predictions(img)
 
     def vr_http_classify(self, img):
         """ Classifies an image sent via from VR via HTTP. """
 
-        img = cv2.resize(img, (self.Helpers.confs["cnn"]["data"]["dim"], 
-                                self.Helpers.confs["cnn"]["data"]["dim"]))
+        img = cv2.resize(img, (self.Helpers.confs["cnn"]["data"]["dim"],
+                               self.Helpers.confs["cnn"]["data"]["dim"]))
         img = self.reshape(img)
-        
-        return self.Helpers.confs["cnn"]["data"]["labels"][self.get_predictions(img)]
-    
+
+        return self.get_predictions(img)
+
     def get_predictions(self, img):
         """ Gets a prediction for an image. """
-        
+
         predictions = self.tf_model.predict_proba(img)
-        prediction = predictions[0]
-        prediction  = np.argmax(prediction)
-        
+        prediction = np.argmax(predictions, axis=-1)
+
         return prediction
-    
+
     def reshape(self, img):
         """ Reshapes an image. """
-        
+
         dx, dy, dz = img.shape
         input_data = img.reshape((-1, dx, dy, dz))
-        
+
         return input_data

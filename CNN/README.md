@@ -2,73 +2,68 @@
 
 ## Acute Lymphoblastic Leukemia Detection System 2020
 
-&nbsp;
+### AllDS2020 CNN
 
-# AllDS2020 CNN
-
-## Introduction
-
-This project is the classifier that is used in Acute the Lymphoblastic Leukemia Detection System 2020. The network provided in this project was originally created in [ALL research papers evaluation project](https://github.com/leukemiaresearchassociation/ALL-IDB-Classifiers/blob/master/Python/Tensorflow/2-0/Classification/ALL-Papers/Evaluations/Paper-1.md "ALL research papers evaluation project"), where we replicated the network proposed in the [Acute Leukemia Classification Using Convolution Neural Network In Clinical Decision Support System](https://airccj.org/CSCP/vol7/csit77505.pdf "Acute Leukemia Classification Using Convolution Neural Network In Clinical Decision Support System") paper by Thanh.TTP, Giao N. Pham, Jin-Hyeok Park, Kwang-Seok Moon, Suk-Hwan Lee, and Ki-Ryong Kwon, and the data augmentation proposed in  [Leukemia Blood Cell Image Classification Using Convolutional Neural Network](http://www.ijcte.org/vol10/1198-H0012.pdf "Leukemia Blood Cell Image Classification Using Convolutional Neural Network") by T. T. P. Thanh, Caleb Vununu, Sukhrob Atoev, Suk-Hwan Lee, and Ki-Ryong Kwon. The original project was inspired by the [work](https://github.com/AmlResearchProject/AML-ALL-Classifiers/blob/master/Python/_Keras/QuantisedCode/QuantisedCode.ipynb "work") done by [Amita Kapoor](https://www.petermossamlallresearch.com/team/amita-kapoor/profile "Amita Kapoor") and [Taru Jain](https://www.petermossamlallresearch.com/students/student/taru-jain/profile "Taru Jain") and Adam's [projects](https://github.com/AMLResearchProject/AML-ALL-Classifiers/tree/master/Python/_Keras/AllCNN "projects") based on their work.
-
-_This is a high level tutorial for those that have little to no programming experience allowing them to use the system. In the coming weeks a series of low level articles will be published on our [Medium](https://medium.com/leukemiaairesearch "Medium") for the more experienced developers._
-
-&nbsp;
-
-## Results Overview
-
-We have tested our model on a number of different hardwares, including Intel® CPUs & NVIDIA GPUs. Results seem to vary between CPU & GPU, and tests show further investigation into seeding and randomness introduced to our network via the GPU software. For reproducible results every time, it is suggested to train on a CPU, although this obviously requires more time.
-
-One method to overcome reproducibility issues and get an good idea of how well our model is behaving on GPU would be to test the model multiple times and take an average. This is one way we will explore our model in the future.
-
-Below are the results from individual training sessions.
-
-| OS | Hardware | Training | Validation | Test | Accuracy | Recall | Precision | AUC/ROC |
-| -------------------- | -------------------- | -------------------- | ----- | ---------- | ---------- | ---------- | ---------- | ---------- |
-| Google Colab | Tesla K80 GPU | 1180 |  404 | 20 |  0.9727723 | 0.9727723 | 0.9727723 | 0.9948964 |
-| Windows 10 | NVIDIA GeoForce GTX 1060 | 1180 |  404 | 20 |  0.97066015 | 0.97066015 | 0.97066015 | 0.9908836 |
-| Ubuntu 18.04 | NVIDIA GTX 1050 Ti Ti/PCIe/SSE2 | 1180 |  404 | 20 |  0.97772276 | 0.97772276 | 0.97772276 | 0.9945594 |
-| Ubuntu 18.04 | Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8   | 1180 |  404 | 20 |  0.9752475 | 0.9752475 | 0.9752475 | 0.991492 |
-| Windows 10 | Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8   | 1180 |  404 | 20 |  0.9851485 | 0.9851485 | 0.9851485 | 0.9985846 |
-| macOS Mojave 10.14.6 | Intel® Core™ i5 CPU @ 2.4 GHz   | 1180 |  404 | 20 |  0.9589041 | 0.9589041 | 0.9589041 | 0.99483955 |
-
-&nbsp;
-
-# Programming Language
-
-- Python 3.7
-
-&nbsp;
-
-# Software 
-
-In this project we have used the following softwares:
-
-- Anaconda
-- Tensorflow 2 GPU
+- [Introduction](#introduction)
+- [DISCLAIMER](#disclaimer)
+- [ALL-IDB](#all-idb)
+  - [ALL_IDB1](#all_idb1)
+- [Network Architecture](#network-architecture)
+  - [Results Overview](#results-overview)
+- [Installation](#installation)
+    - [Anaconda](#anaconda)
+    - [Clone The Repository](#clone-the-repository)
+    - [Setup File](#setup-file)
+    - [Windows Installation Issues](#windows-installation-issues)
+    - [AutoPilot Scripts](#autopilot-scripts)
+- [Getting Started](#getting-started)
+    - [Data](#data)
+    - [Code Structure](#code-structure)
+        - [Classes](#classes)
+            - [Functions](#functions)
+    - [Configuration](#configuration)
+- [Metrics](#metrics)
+- [Training The Model](#training-the-model)
+    - [Start The Training](#start-the-training)
+        - [Data](#data)
+        - [Model](#model)
+        - [Training Results](#training-results)
+        - [Metrics Overview](#metrics-overview)
+        - [ALL-IDB Required Metrics](#all-idb-required-metrics)
+- [Local Testing](#local-testing)
+    - [Local Testing Results](#local-testing-results)
+- [Server Testing](#server-testing)
+    - [Server Testing Results](#server-testing-results)
+- [Raspberry Pi 4](#raspberry-pi-4)
+- [Contributing](#contributing)
+  - [Contributors](#contributors)
+- [Versioning](#versioning)
+- [License](#license)
+- [Bugs/Issues](#bugs-issues)
 
 &nbsp;
 
-# Installation
+# Introduction
 
-## Anaconda
+This project trains the model that will be used in Acute the Lymphoblastic Leukemia Detection System 2020. The network provided in this project was originally created in [ALL research papers evaluation project](https://github.com/LeukemiaAiResearch/ALL-IDB-Classifiers/blob/master/Python/Tensorflow/2-0/Classification/ALL-Papers/Evaluations/Paper-1.md "ALL research papers evaluation project"), where we replicated the network proposed in the [Acute Leukemia Classification Using Convolution Neural Network In Clinical Decision Support System](https://airccj.org/CSCP/vol7/csit77505.pdf "Acute Leukemia Classification Using Convolution Neural Network In Clinical Decision Support System") paper by Thanh.TTP, Giao N. Pham, Jin-Hyeok Park, Kwang-Seok Moon, Suk-Hwan Lee, and Ki-Ryong Kwon, and the data augmentation proposed in  [Leukemia Blood Cell Image Classification Using Convolutional Neural Network](http://www.ijcte.org/vol10/1198-H0012.pdf "Leukemia Blood Cell Image Classification Using Convolutional Neural Network") by T. T. P. Thanh, Caleb Vununu, Sukhrob Atoev, Suk-Hwan Lee, and Ki-Ryong Kwon. The original project was inspired by the [work](https://github.com/AmlResearchProject/AML-ALL-Classifiers/blob/master/Python/_Keras/QuantisedCode/QuantisedCode.ipynb "work") done by [Amita Kapoor](https://www.petermossamlallresearch.com/team/amita-kapoor/profile "Amita Kapoor") and [Taru Jain](https://www.petermossamlallresearch.com/students/student/taru-jain/profile "Taru Jain") and my [projects](https://github.com/AMLResearchProject/AML-ALL-Classifiers/tree/master/Python/_Keras/AllCNN "projects") based on their work.
 
-If you haven't already installed Anaconda and set up your conda env and Tensorflow installation, please follow our [Anaconda installation guide](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/Documentation/Anaconda.md "Anaconda installation guide"). 
+&nbsp;
 
-## Setup.sh
+# DISCLAIMER
 
-All other requirements are included in **Setup.sh**. You can run this file on machine by navigating to the **CNN** directory in terminal and using the command below:
+This project should be used for research purposes only. The purpose of the project is to show the potential of Artificial Intelligence for medical support systems such as diagnosis systems. Although the program is fairly accurate and shows good results both on paper and in real world testing, it is not meant to be an alternative to professional medical diagnosis. I am a self taught developer with some experience in using Artificial Intelligence for detecting certain types of cancer. I am not a doctor, medical or cancer expert. Please use this system responsibly.
 
-```
-sh Setup.sh
-```
+&nbsp;
 
-## Windows Installation Issue(s)
+# ALL-IDB
 
-If you're working on a Windows 10 machine and facing some issues, please follow our [Windows Issues guide](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/Documentation/Windows.md "Windows Issues guide"). In case your issue is not mentioned and you're able to solve it, do create a pull request mentioning the same in the aforementioned file.
+You need to be granted access to use the Acute Lymphoblastic Leukemia Image Database for Image Processing dataset. You can find the application form and information about getting access to the dataset on [this page](https://homes.di.unimi.it/scotti/all/#download) as well as information on how to contribute back to the project [here](https://homes.di.unimi.it/scotti/all/results.php). If you are not able to obtain a copy of the dataset please feel free to try this tutorial on your own dataset, we would be very happy to find additional AML & ALL datasets.
 
-## AutoPilot Scripts
+## ALL_IDB1 
 
-If you would like to replicate the exact scenarios we tested in or simply like to put the entire process in AutoPilot, please follow our [AutoPilot guide](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/Documentation/AutoPilot.md "AutoPilot guide"). 
+In this project, [ALL-IDB1](https://homes.di.unimi.it/scotti/all/#datasets) is used, one of the datsets from the Acute Lymphoblastic Leukemia Image Database for Image Processing dataset. We will use data augmentation to increase the amount of training and testing data we have.
+
+"The ALL_IDB1 version 1.0 can be used both for testing segmentation capability of algorithms, as well as the classification systems and image preprocessing methods. This dataset is composed of 108 images collected during September, 2005. It contains about 39000 blood elements, where the lymphocytes has been labeled by expert oncologists. The images are taken with different magnifications of the microscope ranging from 300 to 500."
 
 &nbsp;
 
@@ -90,11 +85,85 @@ We will build a Convolutional Neural Network, as shown in Fig 1, consisting of t
 - Fully Connected layer (2 neurons)
 - Softmax layer (Output 2)
 
+## Results Overview
+
+We have tested our model on a number of different hardwares, including Intel® CPUs & NVIDIA GPUs. Results seem to vary between CPU & GPU, and tests show further investigation into seeding and randomness introduced to our network via the GPU software. For reproducible results every time, it is suggested to train on a CPU, although this obviously requires more time.
+
+One method to overcome reproducibility issues and get an good idea of how well our model is behaving on GPU would be to test the model multiple times and take an average. This is one way we will explore our model in the future.
+
+Below are the results from individual training sessions.
+
+
+| OS | Hardware | Training | Validation | Test | Accuracy | Recall | Precision | AUC/ROC |
+| -------------------- | -------------------- | -------------------- | ----- | ---------- | ---------- | ---------- | ---------- | ---------- |
+| Google Colab | Tesla K80 GPU | 1180 |  404 | 20 |  0.9727723 | 0.9727723 | 0.9727723 | 0.9948964 |
+| Windows 10 | NVIDIA GeoForce GTX 1060 | 1180 |  404 | 20 |  0.97066015 | 0.97066015 | 0.97066015 | 0.9908836 |
+| Ubuntu 18.04 | NVIDIA GTX 1050 Ti Ti/PCIe/SSE2 | 1180 |  404 | 20 |  0.97772276 | 0.97772276 | 0.97772276 | 0.9989155 |
+| Ubuntu 18.04 | Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8   | 1180 |  404 | 20 |  0.9752475 | 0.9752475 | 0.9752475 | 0.991492 |
+| Windows 10 | Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8   | 1180 |  404 | 20 |  0.9851485 | 0.9851485 | 0.9851485 | 0.9985846 |
+| macOS Mojave 10.14.6 | Intel® Core™ i5 CPU @ 2.4 GHz   | 1180 |  404 | 20 |  0.9589041 | 0.9589041 | 0.9589041 | 0.99483955 |
+
+&nbsp;
+
+# Installation
+
+## Anaconda
+
+If you haven't already installed Anaconda and set up your conda env and Tensorflow installation, please follow our [Anaconda installation guide](../Documentation/Anaconda.md "Anaconda installation guide"). 
+
+## Clone the repository
+
+Clone the [Acute Lymphoblastic Leukemia Detection System 2020](https://github.com/AMLResearchProject/ALL-Detection-System-2020 " Acute Lymphoblastic Leukemia Detection System 2020") repository from the [Peter Moss Acute Myeloid & Lymphoblastic Leukemia AI Research Project](https://github.com/AMLResearchProject "Peter Moss Acute Myeloid & Lymphoblastic Leukemia AI Research Project") Github Organization.
+
+To clone the repository and install the Acute Lymphoblastic Leukemia Detection System 2020 Classifier For Raspberry Pi 4, make sure you have Git installed. Now navigate to the home directory on your device using terminal/commandline, and then use the following command.
+
+```
+$ git clone https://github.com/AMLResearchProject/ALL-Detection-System-2020.git
+```
+
+Once you have used the command above you will see a directory called **ALL-Detection-System-2020** in your home directory.
+
+```
+ls
+```
+
+Using the ls command in your home directory should show you the following.
+
+```
+ALL-Detection-System-2020
+```
+
+Navigate to **ALL-Detection-System-2020/RPI4** directory, this is your project root directory for this tutorial.
+
+### Developer Forks
+
+Developers from the Github community that would like to contribute to the development of this project should first create a fork, and clone that repository. For detailed information please view the [CONTRIBUTING](../CONTRIBUTING.md "CONTRIBUTING") guide. You should pull the latest code from the development branch.
+
+```
+git clone -b "0.3.0" https://github.com/COVID-19-AI-Research-Project/AI-Classification.git
+```
+
+The **-b "0.3.0"** parameter ensures you get the code from the latest master branch. Before using the below command please check our latest master branch in the button at the top of the project README.
+
+## Setup File
+
+All other requirements are included in **Setup.sh**. You can run this file on machine by navigating to the **CNN** directory in terminal and using the command below:
+
+```
+sh Setup.sh
+```
+
+## Windows Installation Issues
+
+If you're working on a Windows 10 machine and facing some issues, please follow our [Windows Issues guide](../Documentation/Windows.md "Windows Issues guide"). In case your issue is not mentioned and you're able to solve it, do create a pull request mentioning the same in the aforementioned file.
+
+## AutoPilot Scripts
+
+If you would like to replicate the exact scenarios we tested in or simply like to put the entire process in AutoPilot, please follow our [AutoPilot guide](../Documentation/AutoPilot.md "AutoPilot guide"). 
+
 &nbsp;
 
 # Getting Started
-
-To get started make sure you completed the steps on the [project home README](https://github.com/AMLResearchProject/ALL-Detection-System-2020 "project home README").
 
 ## Data
 
@@ -131,24 +200,23 @@ Next add the remaining 88 images to the **Model/Data/Train** folder. The test im
 
 The code for this project consists of 5 main Python files and a configuration file:
 
-- [config.json](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Model/config.json "config.json"): The configuration file.
-- [AllDS2020.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/AllDS2020.py "AllDS2020.py"): Core classifier wrapper class.
-- [Helpers.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Helpers.py "Helpers.py"): A helpers class.
-- [Data.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Data.py "Data.py"): A data helpers class.
-- [Augmentation.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Augmentation.py "Augmentation.py"): An augmentation helpers class.
-- [Model.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Model.py "Model.py"): A model helpers class.
-- [Server.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Server.py "Server.py"): A server helpers class.
+- [config.json](Model/config.json "config.json"): The configuration file.
+- [AllDS2020.py](AllDS2020.py "AllDS2020.py"): Core classifier wrapper class.
+- [Helpers.py](Classes/Helpers.py "Helpers.py"): A helpers class.
+- [Data.py](Classes/Data.py "Data.py"): A data helpers class.
+- [Augmentation.py](Classes/Augmentation.py "Augmentation.py"): An augmentation helpers class.
+- [Model.py](Classes/Model.py "Model.py"): A model helpers class.
+- [Server.py](Classes/Server.py "Server.py"): A server helpers class.
 
 ### Classes 
 
 Our functionality for this network can be found mainly in the **Classes** directory. 
 
-- [Helpers.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Helpers.py "Helpers.py") is a helper class. The class loads the configuration and logging that the project uses.
-- [Data.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Data.py "Data.py") is a data helper class. The class provides the functionality for sorting and preparing your training and validation data.
-- [Augmentation.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Augmentation.py "Augmentation.py") is a augmentation helper class, The class provides functionality for data augmentation.
-- [Model.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Model.py "Model.py") is a model helper class. The class provides the functionality for creating our CNN. 
-- [Server.py](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Classes/Server.py "Server.py") is a server helpers class. The class provides the functionality for creating our CNN 
-
+- [Helpers.py](Classes/Helpers.py "Helpers.py") is a helper class. The class loads the configuration and logging that the project uses.
+- [Data.py](Classes/Data.py "Data.py") is a data helper class. The class provides the functionality for sorting and preparing your training and validation data.
+- [Augmentation.py](Classes/Augmentation.py "Augmentation.py") is a augmentation helper class, The class provides functionality for data augmentation.
+- [Model.py](Classes/Model.py "Model.py") is a model helper class. The class provides the functionality for creating our CNN. 
+- [Server.py](Classes/Server.py "Server.py") is a server helpers class. The class provides the functionality for creating our CNN 
 
 #### Functions
 
@@ -200,9 +268,9 @@ Our functionality for this network can be found mainly in the **Classes** direct
 
 &nbsp;
 
-# Configuration
+## Configuration
 
-[config.json](https://github.com/AMLResearchProject/ALL-Detection-System-2020/tree/master/CNN/Model/config.json "config.json")  holds the configuration for our network. 
+[config.json](Model/config.json "config.json")  holds the configuration for our network. 
 
 ```
 {
@@ -299,6 +367,10 @@ These metrics will be displayed and plotted once our model is trained.  A useful
 
 Now you are ready to train your model. As mentioned above, an Ubuntu machine with an NVIDIA GTX 1050 ti was used. Using different machines/GPU(standalone or integrated)/CPU may vary the results, if so please let us know your findings.
 
+There is a known issue when training on NVIDIA GPU/CUDA that introduces randomness to the training process and ultimately, the results. For reproducible results every time, it is suggested to train on a CPU, although this obviously requires more time.
+
+One method to overcome reproducibility issues and get an good idea of how well our model is behaving on GPU would be to test the model multiple times and take an average. This is one way we will explore our model in the future.
+
 ## Start The Training
 
 Ensuring you have completed all previous steps, you can start training using the following command. 
@@ -314,17 +386,18 @@ This tells the classifier to start in Train mode which will start the model trai
 First the data will be prepared.
 
 ```
-2020-03-12 04:56:34,566 - Data - INFO - Data shape: (1584, 100, 100, 3)
-2020-03-12 04:56:34,568 - Data - INFO - Labels shape: (1584, 2)
-2020-03-12 04:56:34,568 - Data - INFO - Raw data: 792
-2020-03-12 04:56:34,568 - Data - INFO - Raw negative data: 441
-2020-03-12 04:56:34,568 - Data - INFO - Raw positive data: 792
-2020-03-12 04:56:34,568 - Data - INFO - Augmented data: (1584, 100, 100, 3)
-2020-03-12 04:56:34,568 - Data - INFO - Labels: (1584, 2)
-2020-03-12 04:56:34,667 - Data - INFO - Training data: (1180, 100, 100, 3)
-2020-03-12 04:56:34,668 - Data - INFO - Training labels: (1180, 2)
-2020-03-12 04:56:34,668 - Data - INFO - Validation data: (404, 100, 100, 3)
-2020-03-12 04:56:34,668 - Data - INFO - Validation labels: (404, 2)
+2020-07-01 19:34:28,273 - Data - INFO - Data shape: (1584, 100, 100, 3)
+2020-07-01 19:34:28,274 - Data - INFO - Labels shape: (1584, 2)
+2020-07-01 19:34:28,274 - Data - INFO - Raw data: 792
+2020-07-01 19:34:28,274 - Data - INFO - Raw negative data: 441
+2020-07-01 19:34:28,275 - Data - INFO - Raw positive data: 792
+2020-07-01 19:34:28,275 - Data - INFO - Augmented data: (1584, 100, 100, 3)
+2020-07-01 19:34:28,275 - Data - INFO - Labels: (1584, 2)
+2020-07-01 19:34:28,343 - Data - INFO - Training data: (1180, 100, 100, 3)
+2020-07-01 19:34:28,343 - Data - INFO - Training labels: (1180, 2)
+2020-07-01 19:34:28,343 - Data - INFO - Validation data: (404, 100, 100, 3)
+2020-07-01 19:34:28,343 - Data - INFO - Validation labels: (404, 2)
+2020-07-01 19:34:28,344 - Model - INFO - Data preperation complete.
 ```
 
 ### Model Summary
@@ -336,23 +409,23 @@ Before the model begins training, we will be shown the model summary, or archite
 ```
 Model: "AllDS2020_TF_CNN"
 _________________________________________________________________
-Layer (type)                 Output Shape              Param #   
+Layer (type)                 Output Shape              Param #
 =================================================================
-zero_padding2d (ZeroPadding2 (None, 104, 104, 3)       0         
+zero_padding2d (ZeroPadding2 (None, 104, 104, 3)       0
 _________________________________________________________________
-conv2d (Conv2D)              (None, 100, 100, 30)      2280      
+conv2d (Conv2D)              (None, 100, 100, 30)      2280
 _________________________________________________________________
-zero_padding2d_1 (ZeroPaddin (None, 104, 104, 30)      0         
+zero_padding2d_1 (ZeroPaddin (None, 104, 104, 30)      0
 _________________________________________________________________
-conv2d_1 (Conv2D)            (None, 100, 100, 30)      22530     
+conv2d_1 (Conv2D)            (None, 100, 100, 30)      22530
 _________________________________________________________________
-max_pooling2d (MaxPooling2D) (None, 50, 50, 30)        0         
+max_pooling2d (MaxPooling2D) (None, 50, 50, 30)        0
 _________________________________________________________________
-flatten (Flatten)            (None, 75000)             0         
+flatten (Flatten)            (None, 75000)             0
 _________________________________________________________________
-dense (Dense)                (None, 2)                 150002    
+dense (Dense)                (None, 2)                 150002
 _________________________________________________________________
-activation (Activation)      (None, 2)                 0         
+activation (Activation)      (None, 2)                 0
 =================================================================
 Total params: 174,812
 Trainable params: 174,812
@@ -386,40 +459,40 @@ _Fig 5. Ubuntu/GTX 1050 ti Recall_
 
 _Fig 6. Ubuntu/GTX 1050 ti AUC_
 
-```
-2020-03-12 05:01:34,983 - Model - INFO - Metrics: loss 0.10102711595816187
-2020-03-12 05:01:34,984 - Model - INFO - Metrics: acc 0.97772276
-2020-03-12 05:01:34,984 - Model - INFO - Metrics: precision 0.97772276
-2020-03-12 05:01:34,984 - Model - INFO - Metrics: recall 0.97772276
-2020-03-12 05:01:34,984 - Model - INFO - Metrics: auc 0.9945594
+```2020-07-01 19:39:05,684 - Model - INFO - Metrics: loss 0.04732655737512183
+2020-07-01 19:39:05,684 - Model - INFO - Metrics: acc 0.97772276
+2020-07-01 19:39:05,684 - Model - INFO - Metrics: precision 0.97772276
+2020-07-01 19:39:05,684 - Model - INFO - Metrics: recall 0.97772276
+2020-07-01 19:39:05,684 - Model - INFO - Metrics: auc 0.9989155
 
-2020-03-12 05:01:46,254 - Model - INFO - Confusion Matrix: [[213   4] [  5 182]]
+2020-07-01 19:39:06,117 - Model - INFO - Confusion Matrix: [[230   4]
+ [  5 165]]
 
-2020-03-12 05:01:47,239 - Model - INFO - True Positives: 182(45.04950495049505%)
-2020-03-12 05:01:47,239 - Model - INFO - False Positives: 4(0.9900990099009901%)
-2020-03-12 05:01:47,239 - Model - INFO - True Negatives: 213(52.722772277227726%)
-2020-03-12 05:01:47,239 - Model - INFO - False Negatives: 5(1.2376237623762376%)
-2020-03-12 05:01:47,240 - Model - INFO - Specificity: 0.9815668202764977
-2020-03-12 05:01:47,240 - Model - INFO - Misclassification: 9(2.227722772277228%)
+2020-07-01 19:39:06,206 - Model - INFO - True Positives: 165(40.84158415841584%)
+2020-07-01 19:39:06,206 - Model - INFO - False Positives: 4(0.9900990099009901%)
+2020-07-01 19:39:06,206 - Model - INFO - True Negatives: 230(56.93069306930693%)
+2020-07-01 19:39:06,206 - Model - INFO - False Negatives: 5(1.2376237623762376%)
+2020-07-01 19:39:06,206 - Model - INFO - Specificity: 0.9829059829059829
+2020-07-01 19:39:06,206 - Model - INFO - Misclassification: 9(2.227722772277228%)
 ```
 
 ## Metrics Overview
 
 | Accuracy | Recall | Precision | AUC/ROC |
 | ---------- | ---------- | ---------- | ---------- |
-| 0.97772276 | 0.97772276 | 0.97772276 | 0.9945594 |
+| 0.97772276 | 0.97772276 | 0.97772276 | 0.9989155 |
 
 ## ALL-IDB Required Metrics
 
 | Figures of merit     | Amount/Value | Percentage |
 | -------------------- | ----- | ---------- |
-| True Positives       | 182 | 45.04950495049505% |
+| True Positives       | 165 | 40.84158415841584% |
 | False Positives      | 4 | 0.9900990099009901% |
-| True Negatives       | 213 | 52.722772277227726% |
+| True Negatives       | 230 | 56.93069306930693% |
 | False Negatives      | 5 | 1.2376237623762376% |
 | Misclassification    | 9 | 2.227722772277228% |
-| Sensitivity / Recall | 0.9794521   | 0.98% |
-| Specificity          | 0.9815668202764977  | 99% |
+| Sensitivity / Recall | 0.97772276   | 0.98% |
+| Specificity          | 0.9829059829059829  | 99% |
 
 &nbsp;
 
@@ -427,60 +500,62 @@ _Fig 6. Ubuntu/GTX 1050 ti AUC_
 
 Now we will use the test data to see how the classifier reacts to our testing data. Real world testing is the most important testing, as it allows you to see the how the model performs in a real world environment. 
 
-This part of the system will use the test data from the **Model/Data/ALL-IDB-1/Test** directory. The command to start testing locally is as follows:
+This part of the system will use the test data from the **Model/Data/Test** directory. The command to start testing locally is as follows:
 
 ```
 python AllDS2020.py Classify
 ```
 
-## Output/Results
+## Local Testing Results
 
 ```
-2020-03-12 05:08:17,645 - Model - INFO - Loaded test image Model/Data/Test/Im035_0.jpg
-2020-03-12 05:08:19,241 - Model - INFO - ALL correctly not detected (True Negative)
-2020-03-12 05:08:19,279 - Model - INFO - Loaded test image Model/Data/Test/Im024_1.jpg
-2020-03-12 05:08:19,302 - Model - INFO - ALL correctly detected (True Positive)
-2020-03-12 05:08:19,385 - Model - INFO - Loaded test image Model/Data/Test/Im101_0.jpg
-2020-03-12 05:08:19,407 - Model - INFO - ALL correctly not detected (True Negative)
-2020-03-12 05:08:19,489 - Model - INFO - Loaded test image Model/Data/Test/Im088_0.jpg
-2020-03-12 05:08:19,510 - Model - INFO - ALL incorrectly detected (False Positive)
-2020-03-12 05:08:19,590 - Model - INFO - Loaded test image Model/Data/Test/Im057_1.jpg
-2020-03-12 05:08:19,610 - Model - INFO - ALL correctly detected (True Positive)
-2020-03-12 05:08:19,690 - Model - INFO - Loaded test image Model/Data/Test/Im106_0.jpg
-2020-03-12 05:08:19,711 - Model - INFO - ALL correctly not detected (True Negative)
-2020-03-12 05:08:19,748 - Model - INFO - Loaded test image Model/Data/Test/Im006_1.jpg
-2020-03-12 05:08:19,771 - Model - INFO - ALL correctly detected (True Positive)
-2020-03-12 05:08:19,809 - Model - INFO - Loaded test image Model/Data/Test/Im026_1.jpg
-2020-03-12 05:08:19,829 - Model - INFO - ALL correctly detected (True Positive)
-2020-03-12 05:08:19,866 - Model - INFO - Loaded test image Model/Data/Test/Im031_1.jpg
-2020-03-12 05:08:19,887 - Model - INFO - ALL correctly detected (True Positive)
-2020-03-12 05:08:19,968 - Model - INFO - Loaded test image Model/Data/Test/Im053_1.jpg
-2020-03-12 05:08:19,992 - Model - INFO - ALL incorrectly not detected (False Negative)
-2020-03-12 05:08:20,072 - Model - INFO - Loaded test image Model/Data/Test/Im060_1.jpg
-2020-03-12 05:08:20,094 - Model - INFO - ALL correctly detected (True Positive)
-2020-03-12 05:08:20,175 - Model - INFO - Loaded test image Model/Data/Test/Im041_0.jpg
-2020-03-12 05:08:20,200 - Model - INFO - ALL correctly not detected (True Negative)
-2020-03-12 05:08:20,273 - Model - INFO - Loaded test image Model/Data/Test/Im095_0.jpg
-2020-03-12 05:08:20,294 - Model - INFO - ALL incorrectly detected (False Positive)
-2020-03-12 05:08:20,373 - Model - INFO - Loaded test image Model/Data/Test/Im069_0.jpg
-2020-03-12 05:08:20,393 - Model - INFO - ALL correctly not detected (True Negative)
-2020-03-12 05:08:20,430 - Model - INFO - Loaded test image Model/Data/Test/Im028_1.jpg
-2020-03-12 05:08:20,450 - Model - INFO - ALL correctly detected (True Positive)
-2020-03-12 05:08:20,533 - Model - INFO - Loaded test image Model/Data/Test/Im063_1.jpg
-2020-03-12 05:08:20,557 - Model - INFO - ALL correctly detected (True Positive)
-2020-03-12 05:08:20,640 - Model - INFO - Loaded test image Model/Data/Test/Im047_0.jpg
-2020-03-12 05:08:20,661 - Model - INFO - ALL correctly not detected (True Negative)
-2020-03-12 05:08:20,696 - Model - INFO - Loaded test image Model/Data/Test/Im020_1.jpg
-2020-03-12 05:08:20,717 - Model - INFO - ALL correctly detected (True Positive)
-2020-03-12 05:08:20,797 - Model - INFO - Loaded test image Model/Data/Test/Im074_0.jpg
-2020-03-12 05:08:20,818 - Model - INFO - ALL incorrectly detected (False Positive)
-2020-03-12 05:08:20,898 - Model - INFO - Loaded test image Model/Data/Test/Im099_0.jpg
-2020-03-12 05:08:20,919 - Model - INFO - ALL correctly not detected (True Negative)
-2020-03-12 05:08:20,919 - Model - INFO - Images Classifier: 20
-2020-03-12 05:08:20,919 - Model - INFO - True Positives: 9
-2020-03-12 05:08:20,919 - Model - INFO - False Positives: 3
-2020-03-12 05:08:20,919 - Model - INFO - True Negatives: 7
-2020-03-12 05:08:20,920 - Model - INFO - False Negatives: 1
+2020-07-01 19:45:45,650 - Model - INFO - Loaded test image Model/Data/Test/Im060_1.jpg
+2020-07-01 19:45:45.700323: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-07-01 19:45:45.832584: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-07-01 19:45:46,439 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
+2020-07-01 19:45:46,519 - Model - INFO - Loaded test image Model/Data/Test/Im099_0.jpg
+2020-07-01 19:45:46,538 - Model - INFO - Acute Lymphoblastic Leukemia correctly not detected (True Negative)
+2020-07-01 19:45:46,571 - Model - INFO - Loaded test image Model/Data/Test/Im006_1.jpg
+2020-07-01 19:45:46,589 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
+2020-07-01 19:45:46,665 - Model - INFO - Loaded test image Model/Data/Test/Im101_0.jpg
+2020-07-01 19:45:46,682 - Model - INFO - Acute Lymphoblastic Leukemia correctly not detected (True Negative)
+2020-07-01 19:45:46,714 - Model - INFO - Loaded test image Model/Data/Test/Im024_1.jpg
+2020-07-01 19:45:46,733 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
+2020-07-01 19:45:46,806 - Model - INFO - Loaded test image Model/Data/Test/Im074_0.jpg
+2020-07-01 19:45:46,823 - Model - INFO - Acute Lymphoblastic Leukemia incorrectly detected (False Positive)
+2020-07-01 19:45:46,897 - Model - INFO - Loaded test image Model/Data/Test/Im041_0.jpg
+2020-07-01 19:45:46,914 - Model - INFO - Acute Lymphoblastic Leukemia correctly not detected (True Negative)
+2020-07-01 19:45:46,988 - Model - INFO - Loaded test image Model/Data/Test/Im047_0.jpg
+2020-07-01 19:45:47,005 - Model - INFO - Acute Lymphoblastic Leukemia incorrectly detected (False Positive)
+2020-07-01 19:45:47,036 - Model - INFO - Loaded test image Model/Data/Test/Im020_1.jpg
+2020-07-01 19:45:47,053 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
+2020-07-01 19:45:47,127 - Model - INFO - Loaded test image Model/Data/Test/Im035_0.jpg
+2020-07-01 19:45:47,144 - Model - INFO - Acute Lymphoblastic Leukemia correctly not detected (True Negative)
+2020-07-01 19:45:47,218 - Model - INFO - Loaded test image Model/Data/Test/Im069_0.jpg
+2020-07-01 19:45:47,235 - Model - INFO - Acute Lymphoblastic Leukemia correctly not detected (True Negative)
+2020-07-01 19:45:47,267 - Model - INFO - Loaded test image Model/Data/Test/Im026_1.jpg
+2020-07-01 19:45:47,284 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
+2020-07-01 19:45:47,358 - Model - INFO - Loaded test image Model/Data/Test/Im057_1.jpg
+2020-07-01 19:45:47,375 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
+2020-07-01 19:45:47,449 - Model - INFO - Loaded test image Model/Data/Test/Im053_1.jpg
+2020-07-01 19:45:47,469 - Model - INFO - Acute Lymphoblastic Leukemia incorrectly not detected (False Negative)
+2020-07-01 19:45:47,501 - Model - INFO - Loaded test image Model/Data/Test/Im028_1.jpg
+2020-07-01 19:45:47,517 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
+2020-07-01 19:45:47,584 - Model - INFO - Loaded test image Model/Data/Test/Im095_0.jpg
+2020-07-01 19:45:47,601 - Model - INFO - Acute Lymphoblastic Leukemia incorrectly detected (False Positive)
+2020-07-01 19:45:47,675 - Model - INFO - Loaded test image Model/Data/Test/Im088_0.jpg
+2020-07-01 19:45:47,692 - Model - INFO - Acute Lymphoblastic Leukemia incorrectly detected (False Positive)
+2020-07-01 19:45:47,766 - Model - INFO - Loaded test image Model/Data/Test/Im063_1.jpg
+2020-07-01 19:45:47,783 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
+2020-07-01 19:45:47,815 - Model - INFO - Loaded test image Model/Data/Test/Im031_1.jpg
+2020-07-01 19:45:47,832 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
+2020-07-01 19:45:47,905 - Model - INFO - Loaded test image Model/Data/Test/Im106_0.jpg
+2020-07-01 19:45:47,922 - Model - INFO - Acute Lymphoblastic Leukemia correctly not detected (True Negative)
+2020-07-01 19:45:47,923 - Model - INFO - Images Classifier: 20
+2020-07-01 19:45:47,923 - Model - INFO - True Positives: 9
+2020-07-01 19:45:47,923 - Model - INFO - False Positives: 4
+2020-07-01 19:45:47,923 - Model - INFO - True Negatives: 6
+2020-07-01 19:45:47,923 - Model - INFO - False Negatives: 1
 ```
 
 &nbsp;
@@ -503,79 +578,85 @@ In your second terminal, use the following command:
 python AllDS2020.py Client
 ```
 
-## Output/Results
+## Server Testing Results
 
 ```
 python AllDS2020.py Client
-2020-03-12 05:19:07,072 - Core - INFO - Helpers class initialization complete.
-2020-03-12 05:19:07,073 - Model - INFO - Model class initialization complete.
-2020-03-12 05:19:07,073 - Core - INFO - AllDS2020 CNN initialization complete.
-2020-03-12 05:19:07,073 - Model - INFO - Sending request for: Model/Data/Test/Im035_0.jpg
-2020-03-12 05:19:08,335 - Model - INFO - ALL correctly not detected (True Negative)
+2020-07-01 19:51:53,161 - Core - INFO - Helpers class initialization complete.
+2020-07-01 19:51:53,163 - Model - INFO - Model class initialization complete.
+2020-07-01 19:51:53,163 - Core - INFO - AllDS2020 CNN initialization complete.
+2020-07-01 19:51:53,164 - Model - INFO - Sending request for: Model/Data/Test/Im028_1.jpg
+2020-07-01 19:51:54,108 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
 
-2020-03-12 05:19:15,337 - Model - INFO - Sending request for: Model/Data/Test/Im024_1.jpg
-2020-03-12 05:19:15,541 - Model - INFO - ALL correctly detected (True Positive)
+2020-07-01 19:52:01,114 - Model - INFO - Sending request for: Model/Data/Test/Im060_1.jpg
+2020-07-01 19:52:02,645 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
 
-2020-03-12 05:19:22,545 - Model - INFO - Sending request for: Model/Data/Test/Im101_0.jpg
-2020-03-12 05:19:22,948 - Model - INFO - ALL correctly not detected (True Negative)
+2020-07-01 19:52:09,653 - Model - INFO - Sending request for: Model/Data/Test/Im057_1.jpg
+2020-07-01 19:52:11,162 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
 
-2020-03-12 05:19:29,955 - Model - INFO - Sending request for: Model/Data/Test/Im088_0.jpg
-2020-03-12 05:19:30,356 - Model - INFO - ALL incorrectly detected (False Positive)
+2020-07-01 19:52:18,169 - Model - INFO - Sending request for: Model/Data/Test/Im041_0.jpg
+2020-07-01 19:52:19,672 - Model - INFO - Acute Lymphoblastic Leukemia correctly not detected (True Negative)
 
-2020-03-12 05:19:37,363 - Model - INFO - Sending request for: Model/Data/Test/Im057_1.jpg
-2020-03-12 05:19:37,767 - Model - INFO - ALL correctly detected (True Positive)
+2020-07-01 19:52:26,680 - Model - INFO - Sending request for: Model/Data/Test/Im106_0.jpg
+2020-07-01 19:52:28,191 - Model - INFO - Acute Lymphoblastic Leukemia correctly not detected (True Negative)
 
-2020-03-12 05:19:44,771 - Model - INFO - Sending request for: Model/Data/Test/Im106_0.jpg
-2020-03-12 05:19:45,164 - Model - INFO - ALL correctly not detected (True Negative)
+2020-07-01 19:52:35,199 - Model - INFO - Sending request for: Model/Data/Test/Im101_0.jpg
+2020-07-01 19:52:36,715 - Model - INFO - Acute Lymphoblastic Leukemia correctly not detected (True Negative)
 
-2020-03-12 05:19:52,171 - Model - INFO - Sending request for: Model/Data/Test/Im006_1.jpg
-2020-03-12 05:19:52,392 - Model - INFO - ALL correctly detected (True Positive)
+2020-07-01 19:52:43,723 - Model - INFO - Sending request for: Model/Data/Test/Im088_0.jpg
+2020-07-01 19:52:45,229 - Model - INFO - Acute Lymphoblastic Leukemia incorrectly detected (False Positive)
 
-2020-03-12 05:19:59,399 - Model - INFO - Sending request for: Model/Data/Test/Im026_1.jpg
-2020-03-12 05:19:59,609 - Model - INFO - ALL correctly detected (True Positive)
+2020-07-01 19:52:52,236 - Model - INFO - Sending request for: Model/Data/Test/Im026_1.jpg
+2020-07-01 19:52:53,060 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
 
-2020-03-12 05:20:06,616 - Model - INFO - Sending request for: Model/Data/Test/Im031_1.jpg
-2020-03-12 05:20:06,834 - Model - INFO - ALL correctly detected (True Positive)
+2020-07-01 19:53:00,068 - Model - INFO - Sending request for: Model/Data/Test/Im031_1.jpg
+2020-07-01 19:53:00,880 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
 
-2020-03-12 05:20:13,841 - Model - INFO - Sending request for: Model/Data/Test/Im053_1.jpg
-2020-03-12 05:20:14,237 - Model - INFO - ALL incorrectly not detected (False Negative)
+2020-07-01 19:53:07,888 - Model - INFO - Sending request for: Model/Data/Test/Im024_1.jpg
+2020-07-01 19:53:08,705 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
 
-2020-03-12 05:20:21,243 - Model - INFO - Sending request for: Model/Data/Test/Im060_1.jpg
-2020-03-12 05:20:21,654 - Model - INFO - ALL correctly detected (True Positive)
+2020-07-01 19:53:15,713 - Model - INFO - Sending request for: Model/Data/Test/Im099_0.jpg
+2020-07-01 19:53:17,206 - Model - INFO - Acute Lymphoblastic Leukemia correctly not detected (True Negative)
 
-2020-03-12 05:20:28,656 - Model - INFO - Sending request for: Model/Data/Test/Im041_0.jpg
-2020-03-12 05:20:29,054 - Model - INFO - ALL correctly not detected (True Negative)
+2020-07-01 19:53:24,213 - Model - INFO - Sending request for: Model/Data/Test/Im020_1.jpg
+2020-07-01 19:53:25,032 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
 
-2020-03-12 05:20:36,059 - Model - INFO - Sending request for: Model/Data/Test/Im095_0.jpg
-2020-03-12 05:20:36,410 - Model - INFO - ALL incorrectly detected (False Positive)
+2020-07-01 19:53:32,039 - Model - INFO - Sending request for: Model/Data/Test/Im047_0.jpg
+2020-07-01 19:53:33,543 - Model - INFO - Acute Lymphoblastic Leukemia correctly not detected (True Negative)
 
-2020-03-12 05:20:43,415 - Model - INFO - Sending request for: Model/Data/Test/Im069_0.jpg
-2020-03-12 05:20:43,806 - Model - INFO - ALL correctly not detected (True Negative)
+2020-07-01 19:53:40,551 - Model - INFO - Sending request for: Model/Data/Test/Im053_1.jpg
+2020-07-01 19:53:42,070 - Model - INFO - Acute Lymphoblastic Leukemia incorrectly not detected (False Negative)
 
-2020-03-12 05:20:50,811 - Model - INFO - Sending request for: Model/Data/Test/Im028_1.jpg
-2020-03-12 05:20:51,036 - Model - INFO - ALL correctly detected (True Positive)
+2020-07-01 19:53:49,077 - Model - INFO - Sending request for: Model/Data/Test/Im006_1.jpg
+2020-07-01 19:53:49,893 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
 
-2020-03-12 05:20:58,039 - Model - INFO - Sending request for: Model/Data/Test/Im063_1.jpg
-2020-03-12 05:20:58,404 - Model - INFO - ALL correctly detected (True Positive)
+2020-07-01 19:53:56,901 - Model - INFO - Sending request for: Model/Data/Test/Im074_0.jpg
+2020-07-01 19:53:58,386 - Model - INFO - Acute Lymphoblastic Leukemia incorrectly detected (False Positive)
 
-2020-03-12 05:21:05,411 - Model - INFO - Sending request for: Model/Data/Test/Im047_0.jpg
-2020-03-12 05:21:05,827 - Model - INFO - ALL correctly not detected (True Negative)
+2020-07-01 19:54:05,393 - Model - INFO - Sending request for: Model/Data/Test/Im069_0.jpg
+2020-07-01 19:54:06,901 - Model - INFO - Acute Lymphoblastic Leukemia correctly not detected (True Negative)
 
-2020-03-12 05:21:12,831 - Model - INFO - Sending request for: Model/Data/Test/Im020_1.jpg
-2020-03-12 05:21:13,017 - Model - INFO - ALL correctly detected (True Positive)
+2020-07-01 19:54:13,909 - Model - INFO - Sending request for: Model/Data/Test/Im063_1.jpg
+2020-07-01 19:54:15,425 - Model - INFO - Acute Lymphoblastic Leukemia correctly detected (True Positive)
 
-2020-03-12 05:21:20,023 - Model - INFO - Sending request for: Model/Data/Test/Im074_0.jpg
-2020-03-12 05:21:20,458 - Model - INFO - ALL incorrectly detected (False Positive)
+2020-07-01 19:54:22,433 - Model - INFO - Sending request for: Model/Data/Test/Im035_0.jpg
+2020-07-01 19:54:23,941 - Model - INFO - Acute Lymphoblastic Leukemia correctly not detected (True Negative)
 
-2020-03-12 05:21:27,463 - Model - INFO - Sending request for: Model/Data/Test/Im099_0.jpg
-2020-03-12 05:21:27,840 - Model - INFO - ALL correctly not detected (True Negative)
+2020-07-01 19:54:30,949 - Model - INFO - Sending request for: Model/Data/Test/Im095_0.jpg
+2020-07-01 19:54:32,366 - Model - INFO - Acute Lymphoblastic Leukemia incorrectly detected (False Positive)
 
-2020-03-12 05:21:34,843 - Model - INFO - Images Classifier: 20
-2020-03-12 05:21:34,844 - Model - INFO - True Positives: 9
-2020-03-12 05:21:34,844 - Model - INFO - False Positives: 3
-2020-03-12 05:21:34,844 - Model - INFO - True Negatives: 7
-2020-03-12 05:21:34,844 - Model - INFO - False Negatives: 1
+2020-07-01 19:54:39,374 - Model - INFO - Images Classifier: 20
+2020-07-01 19:54:39,375 - Model - INFO - True Positives: 9
+2020-07-01 19:54:39,375 - Model - INFO - False Positives: 3
+2020-07-01 19:54:39,375 - Model - INFO - True Negatives: 7
+2020-07-01 19:54:39,376 - Model - INFO - False Negatives: 1
 ```
+
+&nbsp;
+
+# Raspberry Pi 4
+
+Now that your model is trained and tested, head over to the [RPI 4](../RPI4 "RPI 4") project to setup your model on the Raspberry Pi 4 ready to be used with [HIAS](https://github.com/LeukemiaAiResearch/HIAS "HIAS") and the [Rift](../Rift "Rift") Virtual Reality classifier.
 
 &nbsp;
 
@@ -583,30 +664,30 @@ python AllDS2020.py Client
 
 The Peter Moss Acute Myeloid & Lymphoblastic Leukemia AI Research project encourages and welcomes code contributions, bug fixes and enhancements from the Github.
 
-Please read the [CONTRIBUTING](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/CONTRIBUTING.md "CONTRIBUTING") document for a full guide to forking our repositories and submitting your pull requests. You will also find information about our code of conduct on this page.
+Please read the [CONTRIBUTING](../CONTRIBUTING.md "CONTRIBUTING") document for a full guide to forking our repositories and submitting your pull requests. You will also find information about our code of conduct on this page.
 
 ## Contributors
 
-- **AUTHOR:** [Adam Milton-Barker](https://www.petermossamlallresearch.com/team/adam-milton-barker/profile "Adam Milton-Barker") - [Peter Moss Leukemia AI Research](https://www.leukemiaresearchassociation.ai "Peter Moss Leukemia AI Research") founder & Intel Software Innovator, Sabadell, Spain
+- [Adam Milton-Barker](https://www.leukemiaresearchassociation.ai/team/adam-milton-barker "Adam Milton-Barker") - [Asociacion De Investigation En Inteligencia Artificial Para La Leucemia Peter Moss](https://www.leukemiaresearchassociation.ai "Asociacion De Investigation En Inteligencia Artificial Para La Leucemia Peter Moss") President/Lead Developer, Sabadell, Spain
 
-- **TESTER:** [Rishabh Banga](https://www.petermossamlallresearch.com/team/rishabh-banga/profile "Rishabh Banga") - [Peter Moss Leukemia AI Research](https://www.leukemiaresearchassociation.ai "Peter Moss Leukemia AI Research") & Intel Software Innovator, Delhi, India
+- [Javier Lopez Alonso](https://www.leukemiaresearchassociation.ai/team/javier-lopez-alonso "Javier Lopez Alonso") - [Asociacion De Investigation En Inteligencia Artificial Para La Leucemia Peter Moss](https://www.leukemiaresearchassociation.ai "Asociacion De Investigation En Inteligencia Artificial Para La Leucemia Peter Moss") Treasurer/Research & Development, Sabadell, Spain
 
-- **TESTER:** [Javier Lopez Alonso](https://www.leukemiaresearchassociation.ai/team/javier-lopez-alonso "Javier Lopez Alonso") - [Peter Moss Leukemia AI Research](https://www.leukemiaresearchassociation.ai "Peter Moss Leukemia AI Research") Co-Founder, Barcelona, Spain
+- [Rishabh Banga](https://www.leukemiaresearchassociation.ai/team/rishabh-banga "Rishabh Banga") - [Asociacion De Investigation En Inteligencia Artificial Para La Leucemia Peter Moss](https://www.leukemiaresearchassociation.ai "Asociacion De Investigation En Inteligencia Artificial Para La Leucemia Peter Moss") Research & Development, Delhi, India
 
 &nbsp;
 
 # Versioning
 
-We use SemVer for versioning. For the versions available, see [Releases](https://github.com/AMLResearchProject/ALL-Detection-System-2020/releases "Releases").
+We use SemVer for versioning. For the versions available, see [Releases](../releases "Releases").
 
 &nbsp;
 
 # License
 
-This project is licensed under the **MIT License** - see the [LICENSE](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/LICENSE "LICENSE") file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](../LICENSE.md "LICENSE") file for details.
 
 &nbsp;
 
 # Bugs/Issues
 
-We use the [repo issues](https://github.com/AMLResearchProject/ALL-Detection-System-2020/issues "repo issues") to track bugs and general requests related to using this project. See [CONTRIBUTING](https://github.com/AMLResearchProject/ALL-Detection-System-2020/blob/master/CONTRIBUTING.md "CONTRIBUTING") for more info on how to submit bugs, feature requests and proposals.
+We use the [repo issues](../issues "repo issues") to track bugs and general requests related to using this project. See [CONTRIBUTING](../CONTRIBUTING.md "CONTRIBUTING") for more info on how to submit bugs, feature requests and proposals.
