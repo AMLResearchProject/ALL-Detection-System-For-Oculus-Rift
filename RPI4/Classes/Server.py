@@ -6,8 +6,8 @@
 #
 # Author:        Adam Milton-Barker (AdamMiltonBarker.com)
 # Contributors:
-# Title:         Server helper class
-# Description:   Server functions for the Tensorflow 2.0 AllDS2020 CNN.
+# Title:         Server class
+# Description:   Server functions for the Tensorflow 2.0 AllDS2020 CNN For Raspberry Pi 4.
 # License:       MIT License
 # Last Modified: 2020-06-30
 #
@@ -15,14 +15,16 @@
 
 import jsonpickle
 
+import numpy as np
+
 from flask import Flask, request, Response
 
 from Classes.Helpers import Helpers
 
 class Server():
-    """ Server helper class
+    """ Server class
     
-    Server functions for the Tensorflow 2.0 AllDS2020 CNN.
+    Server functions for the Tensorflow 2.0 AllDS2020 CNN For Raspberry Pi 4.
     """
 
     def __init__(self, model):
@@ -54,44 +56,6 @@ class Server():
                 'Response': 'OK',
                 'Message': message,
                 'Diagnosis': diagnosis
-            })
-
-            return Response(response=resp, status=200, mimetype="application/json")
-        
-        @app.route('/VRInference', methods=['POST'])
-        def VRInference(id):
-            """ Responds to requests from Oculus Rift. """
-            
-            t_drive = self.Helpers.confs["cnn"]["data"]["test_data"]
-
-            if int(id)-1 > len(t_drive):
-                ServerResponse = jsonpickle.encode({
-                    'Response': 'FAILED',
-                    'Message': 'No testing data with provided ID'
-                })
-
-            i = int(id)-1
-
-            test_image = self.Helpers.confs["cnn"]["data"]["test"] + "/" + t_drive[i]
-
-            if not os.path.isfile(test_image):
-                ServerResponse = jsonpickle.encode({
-                    'Response': 'FAILED',
-                    'Message': 'No testing data with filename exists'
-                })
-            
-            message = ""
-            classification = self.model.vr_http_classify(cv2.imread(test_image))
-            
-            if classification == 1:
-                msg = "Positive"
-            elif classification == 0:
-                message  = "Negative" 
-
-            resp = jsonpickle.encode({
-                'Response': 'OK',
-                'Message': message,
-                'Classification': classification
             })
 
             return Response(response=resp, status=200, mimetype="application/json")
